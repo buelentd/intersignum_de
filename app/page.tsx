@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '../components/Footer'
 import { LogoBlue } from '../components/Logo'
-import KontaktFormular from '../components/KontaktFormular'
+import KontaktFormular from '../components/Kontaktformular'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
