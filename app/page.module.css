@@ -27,10 +27,15 @@
 .btnNav {
   display: inline-flex;
   align-items: center;
-  font-size: 14px !important; font-weight: 600 !important;
-  color: #fff !important; background: #D45F0A !important;
-  padding: 9px 22px; border-radius: 4px;
-  text-decoration: none; border-bottom: none !important;
+  line-height: 1;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  background: #D45F0A !important;
+  padding: 9px 22px;
+  border-radius: 4px;
+  text-decoration: none;
+  border-bottom: none !important;
   transition: background .2s, transform .15s !important;
 }
 .btnNav:hover { background: #B34F08 !important; transform: translateY(-1px) !important; }
