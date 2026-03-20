@@ -16,15 +16,15 @@ export const metadata: Metadata = {
 }
 
 const kunden = [
-  { name: 'Hyundai Motor Europe', logo: '/logos/hyundai_logo.svg' },
-  { name: 'DZ-Bank',              logo: '/logos/DZ_Bank.png' },
+  { name: 'Hyundai Motor Europe', logo: '/logos/hyundai logo.svg' },
+  { name: 'DZ-Bank',              logo: '/logos/DZ Bank.png' },
   { name: 'Abgeordnetenwatch.de', logo: '/logos/abgeordnetenwatch_logo.png' },
-  { name: 'DAV Summit Club',      logo: '/logos/DAV_Summit_Club.jpg' },
-  { name: 'Springer Professional',logo: '/logos/Springer_Professional.jpg' },
-  { name: 'mail.de',              logo: '/logos/Mail_de_Logo.png' },
+  { name: 'DAV Summit Club',      logo: '/logos/DAV Summit Club.jpg' },
+  { name: 'Springer Professional',logo: '/logos/Springer Professional.jpg' },
+  { name: 'mail.de',              logo: '/logos/Mail.de Logo.png' },
   { name: 'gesund.de',            logo: '/logos/gesund-de-logo.jpg' },
   { name: 'krone.at',             logo: '/logos/krone_at.jpg' },
-  { name: 'Phoenix',              logo: '/logos/phoenix_logo.png' },
+  { name: 'Phoenix',              logo: '/logos/phoenix logo.png' },
   { name: 'United Internet Media',logo: '/logos/UIM_Logo.png' },
   { name: 'Vaventus AG',          logo: '/logos/Vaventus-AG-logo-.png' },
   { name: 'HanseMerkur',          logo: '/logos/Ein-Unternehmen-der-HanseMerkur_gross.jpg' },
