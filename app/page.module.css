@@ -25,6 +25,8 @@
 }
 .nav a:hover { color: #0C3D5E; border-bottom-color: #006E8C; }
 .btnNav {
+  display: inline-flex;
+  align-items: center;
   font-size: 14px !important; font-weight: 600 !important;
   color: #fff !important; background: #D45F0A !important;
   padding: 9px 22px; border-radius: 4px;
