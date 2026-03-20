@@ -1,0 +1,17 @@
+{
+  "name": "intersignum-de",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@hcaptcha/react-hcaptcha": "^2.0.2",
+    "next": "15.2.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "resend": "^6.9.4"
+  }
+} 
