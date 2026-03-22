@@ -20,7 +20,7 @@ const kunden = [
   { name: 'krone.at',             logo: '/logos/krone_at.jpg' },
   { name: 'Phoenix',              logo: '/logos/phoenix logo.png' },
   { name: 'United Internet Media',logo: '/logos/UIM_Logo.png' },
-  { name: 'Vaventus AG',          logo: '/logos/Vaventus-AG-logo-.png' },
+  { name: 'Vaventus AG',          logo: '/logos/Vaventus-AG-logo.png' },
   { name: 'HanseMerkur',          logo: '/logos/Ein-Unternehmen-der-HanseMerkur_gross.jpg' },
 ]
 
