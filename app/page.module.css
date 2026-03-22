@@ -32,14 +32,14 @@
   font-weight: 600 !important;
   color: #fff !important;
   background: #D45F0A !important;
-  padding: 10px 24px !important;
+  padding: 8px 16px !important;
   border-radius: 4px;
   text-decoration: none;
   border-bottom: none !important;
   line-height: 1 !important;
-  height: 40px;
+  height: 36px;
+  white-space: nowrap;
 }
-.btnNav:hover { background: #B34F08 !important; }
 .btnNav:hover { background: #B34F08 !important; transform: translateY(-1px) !important; }
 
 /* ─── HERO ─── */
@@ -310,9 +310,30 @@
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  .headerInner { padding: 16px 20px; height: auto; flex-direction: column; align-items: flex-start; }
-  .nav { gap: 14px; width: 100%; justify-content: flex-start; }
-  .hero { grid-template-columns: 1fr; padding: 156px 20px 56px; gap: 32px; }
+  .headerInner {
+    padding: 0 20px;
+    height: 64px;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+  .nav {
+    gap: 12px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+  .nav a:not(.btnNav) {
+    display: none;
+  }
+  .btnNav {
+    font-size: 12px !important;
+    padding: 7px 12px !important;
+    height: 32px;
+    white-space: nowrap;
+  }
+  .hero { grid-template-columns: 1fr; padding: 100px 20px 56px; gap: 32px; }
+  .heroStats { flex-direction: row; }
+  .statItem { flex: 1; border-bottom: none; border-right: 1px solid #D6DFE5; }
+  .statItem:last-child { border-right: none; }
   .leistungen, .kontaktSection { padding: 56px 20px; }
   .leistungenGrid { grid-template-columns: 1fr; }
   .kundenWrap { padding: 56px 20px; }
@@ -324,4 +345,10 @@
   .kiBanner { padding: 40px 20px; }
   .kontaktSection { grid-template-columns: 1fr; gap: 40px; }
   .kontaktForm { padding: 28px 20px; }
+}
+
+@media (max-width: 480px) {
+  .heroStats { flex-direction: column; }
+  .statItem { border-right: none; border-bottom: 1px solid #D6DFE5; }
+  .statItem:last-child { border-bottom: none; }
 }
