@@ -14,7 +14,7 @@ const kunden = [
   { name: 'DZ-Bank',              logo: '/logos/DZ Bank.png' },
   { name: 'Abgeordnetenwatch.de', logo: '/logos/abgeordnetenwatch_logo.png' },
   { name: 'DAV Summit Club',      logo: '/logos/DAV Summit Club.jpg' },
-  { name: 'Springer Professional',logo: '/logos/Springer Professional.jpg' },
+  { name: 'Springer Professional',logo: '/logos/springerprofessional_Logo.png' },
   { name: 'mail.de',              logo: '/logos/Mail.de Logo.png' },
   { name: 'gesund.de',            logo: '/logos/gesund-de-logo.jpg' },
   { name: 'krone.at',             logo: '/logos/krone_at.jpg' },
