@@ -1,20 +1,13 @@
 // app/page.tsx
 // Startseite intersignum.de
-// Abhängigkeiten: npm install @hcaptcha/react-hcaptcha resend
 
 'use client'
-import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '../components/Footer'
 import { LogoBlue } from '../components/Logo'
 import KontaktFormular from '../components/Kontaktformular'
 import styles from './page.module.css'
-
-export const metadata: Metadata = {
-  title: 'intersignum — IT-Projekte, die in time und in budget bleiben.',
-  description: 'IT-Beratung, Webentwicklung und KI & SaaS aus Berlin. Über 12 Jahre Erfahrung, agil und herstellerunabhängig.',
-}
 
 const kunden = [
   { name: 'Hyundai Motor Europe', logo: '/logos/hyundai logo.svg' },
@@ -74,9 +67,9 @@ export default function Home() {
 
             <div className={styles.heroStats}>
               {[
-                { num: '12+',    label: 'Jahre Erfahrung in\nIT-Beratung & Entwicklung' },
-                { num: '50+',    label: 'erfolgreich abgeschlossene\nProjekte' },
-                { num: '100 %',  label: 'herstellerunabhängige\nTechnologieberatung' },
+                { num: '12+',   label: 'Jahre Erfahrung in\nIT-Beratung & Entwicklung' },
+                { num: '50+',   label: 'erfolgreich abgeschlossene\nProjekte' },
+                { num: '100 %', label: 'herstellerunabhängige\nTechnologieberatung' },
               ].map((s) => (
                 <div key={s.num} className={styles.statItem}>
                   <div className={styles.statNum}>{s.num}</div>
@@ -98,10 +91,10 @@ export default function Home() {
             </div>
             <div className={styles.leistungenGrid}>
               {[
-                { num: '01', title: 'IT-Beratung',    href: '/it-beratung',    text: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.' },
-                { num: '02', title: 'Webentwicklung',  href: '/webentwicklung', text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
-                { num: '03', title: 'KI & SaaS',       href: '/ki-saas',        text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
-                { num: '04', title: 'Data & Integration', href: '/data',         text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines — auf Open-Source-Technologien ohne Vendor Lock-in.' },
+                { num: '01', title: 'IT-Beratung',       href: '/it-beratung',    text: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.' },
+                { num: '02', title: 'Webentwicklung',     href: '/webentwicklung', text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
+                { num: '03', title: 'KI & SaaS',          href: '/ki-saas',        text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
+                { num: '04', title: 'Data & Integration', href: '/data',           text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines — auf Open-Source-Technologien ohne Vendor Lock-in.' },
               ].map((l, i) => (
                 <Link key={l.num} href={l.href} className={`${styles.leistungCard} reveal reveal-delay-${i + 1}`}>
                   <div className={styles.leistungNum}>{l.num}</div>
@@ -243,17 +236,15 @@ export default function Home() {
 
       <Footer />
 
-      {/* ─── CLIENT SCRIPTS (Parallax + Scroll Reveal) ─── */}
+      {/* ─── CLIENT SCRIPTS ─── */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            // Header shadow
             const header = document.getElementById('main-header');
             window.addEventListener('scroll', () => {
               if (header) header.classList.toggle('scrolled', window.scrollY > 10);
             }, { passive: true });
 
-            // Parallax
             const heroBg   = document.getElementById('hero-bg');
             const heroGlow = document.getElementById('hero-glow');
             window.addEventListener('scroll', () => {
@@ -262,7 +253,6 @@ export default function Home() {
               if (heroGlow) heroGlow.style.transform = 'translateY(' + (y * 0.18) + 'px)';
             }, { passive: true });
 
-            // Scroll Reveal
             const io = new IntersectionObserver((entries) => {
               entries.forEach(e => {
                 if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
