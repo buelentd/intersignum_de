@@ -1,15 +1,19 @@
+// app/ki-beratung/page.tsx
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
 import { LogoBlue } from '../../components/Logo'
+import { getKISaasContent } from '../../lib/notion'
 import styles from './ki_saas.module.css'
 
 export const metadata: Metadata = {
-  title: 'KI & SaaS — intersignum',
-  description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.',
+  title: 'KI-Beratung & Automatisierung — intersignum',
+  description: 'KI-gestützte Prozessoptimierung, LLM-Integration und Automatisierung für Unternehmen.',
 }
 
-export default function KiSaas() {
+export default async function KIBeratung() {
+  const c = await getKISaasContent()
+
   return (
     <>
       <header className={styles.header}>
@@ -31,19 +35,17 @@ export default function KiSaas() {
             <div className={styles.breadcrumb}>
               <Link href="/">Startseite</Link>
               <span>›</span>
-              <span>KI & SaaS</span>
+              <span>KI-Beratung</span>
             </div>
-            <p className={styles.eyebrow}>03 — Leistung</p>
-            <h1>KI & SaaS</h1>
-            <p className={styles.heroText}>
-              KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.
-            </p>
+            <p className={styles.eyebrow}>{c.hero.eyebrow}</p>
+            <h1>{c.hero.title}</h1>
+            <p className={styles.heroText}>{c.hero.subtitle}</p>
             <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
           </div>
           <div className={styles.heroImage}>
             <img
               src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80"
-              alt="KI und SaaS"
+              alt={c.hero.title}
             />
           </div>
         </div>
@@ -51,47 +53,60 @@ export default function KiSaas() {
         {/* LEISTUNGEN */}
         <section className={styles.section}>
           <div className={styles.sectionInner}>
-            <h2>Unsere KI- & SaaS-Lösungen</h2>
+            <h2>{c.leistungenTitel}</h2>
             <div className={styles.grid}>
-              <div className={styles.card}>
-                <div className={styles.cardNum}>01</div>
-                <h3>KI-Integration</h3>
-                <p>Wir integrieren Large Language Models und KI-APIs in Ihre bestehenden Prozesse — DSGVO-konform und praxisnah.</p>
+              {c.karten.map((k) => (
+                <div key={k.num} className={styles.card}>
+                  <div className={styles.cardNum}>{k.num}</div>
+                  <h3>{k.titel}</h3>
+                  <p>{k.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* TECHNOLOGIEN */}
+        <section className={styles.sectionAlt}>
+          <div className={styles.sectionInner}>
+            <div className={styles.twoCol}>
+              <div>
+                <h2>{c.tech.titel}</h2>
+                <p>{c.tech.text1}</p>
+                <div className={styles.tagGrid}>
+                  {c.tech.tags.map((tag) => (
+                    <span key={tag} className={styles.tag}>{tag}</span>
+                  ))}
+                </div>
+                <Link href="/#kontakt" className={styles.btnPrimary} style={{marginTop: '32px'}}>
+                  Gespräch vereinbaren →
+                </Link>
               </div>
-              <div className={styles.card}>
-                <div className={styles.cardNum}>02</div>
-                <h3>Prozessautomatisierung</h3>
-                <p>Automatisierung wiederkehrender Aufgaben durch intelligente Workflows — spart Zeit und reduziert Fehler.</p>
-              </div>
-              <div className={styles.card}>
-                <div className={styles.cardNum}>03</div>
-                <h3>SaaS-Entwicklung</h3>
-                <p>Maßgeschneiderte SaaS-Produkte für Ihre Branche — von der Idee bis zur marktreifen Lösung.</p>
-              </div>
-              <div className={styles.card}>
-                <div className={styles.cardNum}>04</div>
-                <h3>Datengetriebene Entscheidungen</h3>
-                <p>Dashboards, Analytics und Reporting-Systeme die Ihnen die richtigen Daten zur richtigen Zeit liefern.</p>
+              <div className={styles.imageWrap}>
+                <img
+                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80"
+                  alt="KI-Technologien"
+                />
               </div>
             </div>
           </div>
         </section>
 
         {/* ANSATZ */}
-        <section className={styles.sectionAlt}>
+        <section className={styles.section}>
           <div className={styles.sectionInner}>
             <div className={styles.twoCol}>
-              <div>
-                <h2>Pragmatisch umgesetzt</h2>
-                <p>KI ist kein Selbstzweck. Wir setzen KI dort ein wo sie echten Mehrwert schafft — messbar, nachvollziehbar und sicher.</p>
-                <p>Alle Lösungen werden DSGVO-konform entwickelt und nahtlos in Ihre bestehende IT-Infrastruktur integriert.</p>
-                <Link href="/#kontakt" className={styles.btnPrimary}>Gespräch vereinbaren →</Link>
-              </div>
               <div className={styles.imageWrap}>
                 <img
-                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80"
-                  alt="KI Lösungen"
+                  src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80"
+                  alt={c.ansatz.titel}
                 />
+              </div>
+              <div>
+                <h2>{c.ansatz.titel}</h2>
+                <p>{c.ansatz.text1}</p>
+                <p>{c.ansatz.text2}</p>
+                <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
               </div>
             </div>
           </div>
@@ -100,8 +115,8 @@ export default function KiSaas() {
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.sectionInner}>
-            <h2>KI für Ihr Unternehmen?</h2>
-            <p>Wir zeigen Ihnen konkret wie KI Ihre Prozesse verbessern kann — unverbindlich und kostenlos.</p>
+            <h2>{c.cta.titel}</h2>
+            <p>{c.cta.text}</p>
             <Link href="/#kontakt" className={styles.btnPrimary}>Jetzt Kontakt aufnehmen →</Link>
           </div>
         </section>

@@ -2,6 +2,7 @@
 // Startseite intersignum.de
 // Abhängigkeiten: npm install @hcaptcha/react-hcaptcha resend
 
+'use client'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -97,9 +98,10 @@ export default function Home() {
             </div>
             <div className={styles.leistungenGrid}>
               {[
-                { num: '01', title: 'IT-Beratung',   href: '/it-beratung',   text: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.' },
-                { num: '02', title: 'Webentwicklung', href: '/webentwicklung', text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
-                { num: '03', title: 'KI & SaaS',      href: '/ki-saas',       text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
+                { num: '01', title: 'IT-Beratung',    href: '/it-beratung',    text: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.' },
+                { num: '02', title: 'Webentwicklung',  href: '/webentwicklung', text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
+                { num: '03', title: 'KI & SaaS',       href: '/ki-saas',        text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
+                { num: '04', title: 'Data & Integration', href: '/data',         text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines — auf Open-Source-Technologien ohne Vendor Lock-in.' },
               ].map((l, i) => (
                 <Link key={l.num} href={l.href} className={`${styles.leistungCard} reveal reveal-delay-${i + 1}`}>
                   <div className={styles.leistungNum}>{l.num}</div>
