@@ -1,6 +1,4 @@
 // lib/notion.ts
-// Liest Content aus Notion-Seiten und gibt strukturierte Objekte zurück.
-// Jede Leistungsseite hat eine eigene Notion-Page-ID.
 
 const NOTION_API_KEY = process.env.NOTION_API_KEY!
 
@@ -9,11 +7,11 @@ const PAGE_IDS = {
   'ki-saas':        '32a0f39a-77b1-80b1-85ca-cb7b041af438',
   'data':           '32a0f39a-77b1-800c-83a5-e32601b98315',
   'webentwicklung': '32a0f39a-77b1-803e-adbf-d3d9b8efcac5',
+  'kunden':         '32b0f39a-77b1-8135-b786-f6e8ceed2c1d',
 } as const
 
 export type PageKey = keyof typeof PAGE_IDS
 
-// Rohe Blocks aus Notion holen
 async function getBlocks(pageId: string): Promise<Record<string, string>> {
   const res = await fetch(
     `https://api.notion.com/v1/blocks/${pageId}/children?page_size=100`,
@@ -22,18 +20,11 @@ async function getBlocks(pageId: string): Promise<Record<string, string>> {
         'Authorization': `Bearer ${NOTION_API_KEY}`,
         'Notion-Version': '2022-06-28',
       },
-      // Next.js: 60 Sekunden Cache, dann revalidieren
       next: { revalidate: 60 },
     }
   )
-
-  if (!res.ok) {
-    throw new Error(`Notion API error: ${res.status}`)
-  }
-
+  if (!res.ok) throw new Error(`Notion API error: ${res.status}`)
   const data = await res.json()
-
-  // KEY: VALUE Format parsen
   const result: Record<string, string> = {}
   for (const block of data.results) {
     if (block.type !== 'paragraph') continue
@@ -46,17 +37,15 @@ async function getBlocks(pageId: string): Promise<Record<string, string>> {
     const value = text.slice(colonIdx + 1).trim()
     result[key] = value
   }
-
   return result
 }
 
-// Karten aus den Blocks extrahieren (dynamisch — beliebig viele)
 function extractKarten(blocks: Record<string, string>) {
   const karten: { num: string; titel: string; text: string }[] = []
   let i = 1
   while (blocks[`KARTE_${i}_TITEL`]) {
     karten.push({
-      num: String(i).padStart(2, '0'),
+      num:   String(i).padStart(2, '0'),
       titel: blocks[`KARTE_${i}_TITEL`],
       text:  blocks[`KARTE_${i}_TEXT`] ?? '',
     })
@@ -65,7 +54,6 @@ function extractKarten(blocks: Record<string, string>) {
   return karten
 }
 
-// Tags aus einem Block-String in ein Array umwandeln
 function parseTags(tagString?: string): string[] {
   if (!tagString) return []
   return tagString.split('·').map(t => t.trim()).filter(Boolean)
@@ -79,8 +67,12 @@ export interface KarteData {
   text: string
 }
 
+export interface KundeData {
+  name: string
+  logo: string
+}
+
 export interface ITBeratungContent {
-  slug: string
   hero: { eyebrow: string; title: string; subtitle: string }
   leistungenTitel: string
   karten: KarteData[]
@@ -89,8 +81,7 @@ export interface ITBeratungContent {
   cta: { titel: string; text: string }
 }
 
-export interface KIBeratungContent {
-  slug: string
+export interface KISaasContent {
   hero: { eyebrow: string; title: string; subtitle: string }
   leistungenTitel: string
   karten: KarteData[]
@@ -100,7 +91,6 @@ export interface KIBeratungContent {
 }
 
 export interface DataContent {
-  slug: string
   hero: { eyebrow: string; title: string; subtitle: string }
   leistungenTitel: string
   karten: KarteData[]
@@ -110,7 +100,6 @@ export interface DataContent {
 }
 
 export interface WebentwicklungContent {
-  slug: string
   hero: { eyebrow: string; title: string; subtitle: string }
   leistungenTitel: string
   karten: KarteData[]
@@ -124,7 +113,6 @@ export interface WebentwicklungContent {
 export async function getITBeratungContent(): Promise<ITBeratungContent> {
   const b = await getBlocks(PAGE_IDS['it-beratung'])
   return {
-    slug: b['SLUG'] ?? '/it-beratung',
     hero: {
       eyebrow:  b['HERO_EYEBROW']  ?? '01 — Leistung',
       title:    b['HERO_TITLE']    ?? 'IT-Beratung & Integration',
@@ -152,7 +140,6 @@ export async function getITBeratungContent(): Promise<ITBeratungContent> {
 export async function getKISaasContent(): Promise<KISaasContent> {
   const b = await getBlocks(PAGE_IDS['ki-saas'])
   return {
-    slug: b['SLUG'] ?? '/ki-beratung',
     hero: {
       eyebrow:  b['HERO_EYEBROW']  ?? '02 — Leistung',
       title:    b['HERO_TITLE']    ?? 'KI-Beratung & Automatisierung',
@@ -180,7 +167,6 @@ export async function getKISaasContent(): Promise<KISaasContent> {
 export async function getDataContent(): Promise<DataContent> {
   const b = await getBlocks(PAGE_IDS['data'])
   return {
-    slug: b['SLUG'] ?? '/data',
     hero: {
       eyebrow:  b['HERO_EYEBROW']  ?? '04 — Leistung',
       title:    b['HERO_TITLE']    ?? 'Data & Integration',
@@ -209,7 +195,6 @@ export async function getDataContent(): Promise<DataContent> {
 export async function getWebentwicklungContent(): Promise<WebentwicklungContent> {
   const b = await getBlocks(PAGE_IDS['webentwicklung'])
   return {
-    slug: b['SLUG'] ?? '/web',
     hero: {
       eyebrow:  b['HERO_EYEBROW']  ?? '03 — Leistung',
       title:    b['HERO_TITLE']    ?? 'Web & Digitale Produkte',
@@ -232,4 +217,18 @@ export async function getWebentwicklungContent(): Promise<WebentwicklungContent>
       text:  b['CTA_TEXT']  ?? '',
     },
   }
+}
+
+export async function getKundenContent(): Promise<KundeData[]> {
+  const b = await getBlocks(PAGE_IDS['kunden'])
+  const kunden: KundeData[] = []
+  let i = 1
+  while (b[`KUNDE_${i}_NAME`]) {
+    kunden.push({
+      name: b[`KUNDE_${i}_NAME`],
+      logo: b[`KUNDE_${i}_LOGO`] ?? '',
+    })
+    i++
+  }
+  return kunden
 }
