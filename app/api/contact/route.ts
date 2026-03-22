@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     // ── 3. E-Mail via Resend senden
     await resend.emails.send({
       from:    'Kontaktformular intersignum.de <kontakt@intersignum.de>',
-      to:      ['kontakt@intersignum.de'],
+      to:      ['info@intersignum.com'],
       replyTo: email,
       subject: `Neue Anfrage von ${vorname} ${nachname}${unternehmen ? ` (${unternehmen})` : ''}`,
       html: `
