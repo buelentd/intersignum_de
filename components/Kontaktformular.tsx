@@ -195,6 +195,7 @@ export default function KontaktFormular() {
         .form-group textarea,
         .form-group select {
           width: 100%;
+          box-sizing: border-box;
           padding: 11px 14px;
           border: 1px solid #D6DFE5;
           border-radius: 4px;
