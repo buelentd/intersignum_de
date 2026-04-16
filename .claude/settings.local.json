@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(CLAUDECODE=\"\" claude mcp add --help)",
+      "Bash(CLAUDECODE=\"\" claude mcp list)",
+      "Bash(xargs ls:*)",
+      "Bash(node -e \"const d=JSON.parse\\(require\\(''''fs''''\\).readFileSync\\(''''/dev/stdin'''',''''utf8''''\\)\\); const s=d.mcpServers||{}; Object.entries\\(s\\).filter\\(\\([k]\\)=>k.toLowerCase\\(\\).includes\\(''''stitch''''\\)\\).forEach\\(\\([k,v]\\)=>console.log\\(k,JSON.stringify\\(v,null,2\\)\\)\\)\")",
+      "Bash(CLAUDECODE=\"\" claude mcp get stitch)",
+      "Bash(CLAUDECODE=\"\" claude mcp get \"google stitch\")",
+      "Bash(CLAUDECODE=\"\" claude mcp list --json)",
+      "Bash(CLAUDECODE=\"\" claude mcp --help)",
+      "Bash(CLAUDECODE=\"\" claude mcp get \"claude.ai google stitch\")",
+      "Bash(CLAUDECODE=\"\" claude mcp remove stitch)"
+    ]
+  }
+}
