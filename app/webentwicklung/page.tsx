@@ -1,4 +1,3 @@
-// app/web/page.tsx
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
@@ -7,11 +6,11 @@ import { getWebentwicklungContent } from '../../lib/sanity/queries'
 import styles from './web.module.css'
 
 export const metadata: Metadata = {
-  title: 'Web & Digitale Produkte — intersignum',
-  description: 'Next.js, React und moderne Web-Applikationen. Von der Konzeption bis zum produktiven Betrieb.',
+  title: 'Webentwicklung — intersignum',
+  description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.',
 }
 
-export default async function Web() {
+export default async function Webentwicklung() {
   const c = await getWebentwicklungContent()
 
   return (
@@ -35,7 +34,7 @@ export default async function Web() {
             <div className={styles.breadcrumb}>
               <Link href="/">Startseite</Link>
               <span>›</span>
-              <span>Web & Digitale Produkte</span>
+              <span>Webentwicklung</span>
             </div>
             <p className={styles.eyebrow}>{c.hero.eyebrow}</p>
             <h1>{c.hero.title}</h1>
@@ -66,47 +65,21 @@ export default async function Web() {
           </div>
         </section>
 
-        {/* STACK */}
+        {/* ABSCHNITT */}
         <section className={styles.sectionAlt}>
           <div className={styles.sectionInner}>
             <div className={styles.twoCol}>
-              <div>
-                <h2>{c.stack.titel}</h2>
-                <p>{c.stack.text1}</p>
-                <div className={styles.tagGrid}>
-                  {c.stack.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
-                  ))}
-                </div>
-                <Link href="/#kontakt" className={styles.btnPrimary} style={{marginTop: '32px'}}>
-                  Gespräch vereinbaren →
-                </Link>
-              </div>
               <div className={styles.imageWrap}>
                 <img
                   src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80"
-                  alt="Web-Technologien"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SKALIERT */}
-        <section className={styles.section}>
-          <div className={styles.sectionInner}>
-            <div className={styles.twoCol}>
-              <div className={styles.imageWrap}>
-                <img
-                  src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80"
-                  alt={c.skaliert.titel}
+                  alt={c.abschnitt.titel}
                 />
               </div>
               <div>
-                <h2>{c.skaliert.titel}</h2>
-                <p>{c.skaliert.text1}</p>
-                <p>{c.skaliert.text2}</p>
-                <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
+                <h2>{c.abschnitt.titel}</h2>
+                <p>{c.abschnitt.text1}</p>
+                <p>{c.abschnitt.text2}</p>
+                <Link href="/#kontakt" className={styles.btnPrimary}>Gespräch vereinbaren →</Link>
               </div>
             </div>
           </div>

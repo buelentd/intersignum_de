@@ -4,6 +4,7 @@ export const kiSaas = defineType({
   name: 'kiSaas',
   title: 'KI & SaaS',
   type: 'document',
+  __experimental_actions: ['update', 'publish'],
   fields: [
     defineField({
       name: 'hero',
@@ -15,44 +16,23 @@ export const kiSaas = defineType({
         defineField({ name: 'subtitle', type: 'text',   title: 'Untertitel' }),
       ],
     }),
-    defineField({
-      name: 'leistungenTitel',
-      type: 'string',
-      title: 'Leistungen — Überschrift',
-    }),
+    defineField({ name: 'leistungenTitel', type: 'string', title: 'Leistungen — Überschrift' }),
     defineField({
       name: 'karten',
       type: 'array',
       title: 'Leistungskarten',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({ name: 'titel', type: 'string', title: 'Kartentitel' }),
-            defineField({ name: 'text',  type: 'text',   title: 'Kartentext' }),
-          ],
-        },
-      ],
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({ name: 'titel', type: 'string', title: 'Titel' }),
+          defineField({ name: 'text',  type: 'text',   title: 'Text' }),
+        ],
+      }],
     }),
     defineField({
-      name: 'tech',
+      name: 'abschnitt',
       type: 'object',
-      title: 'Technologien & Modelle',
-      fields: [
-        defineField({ name: 'titel', type: 'string', title: 'Titel' }),
-        defineField({ name: 'text1', type: 'text',   title: 'Text' }),
-        defineField({
-          name: 'tags',
-          type: 'array',
-          title: 'Technologie-Tags',
-          of: [{ type: 'string' }],
-        }),
-      ],
-    }),
-    defineField({
-      name: 'ansatz',
-      type: 'object',
-      title: 'Unser Ansatz',
+      title: 'Mittlerer Abschnitt',
       fields: [
         defineField({ name: 'titel', type: 'string', title: 'Titel' }),
         defineField({ name: 'text1', type: 'text',   title: 'Absatz 1' }),
@@ -69,5 +49,4 @@ export const kiSaas = defineType({
       ],
     }),
   ],
-  __experimental_actions: ['update', 'publish'],
 })

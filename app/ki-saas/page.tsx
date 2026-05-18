@@ -1,4 +1,3 @@
-// app/ki-beratung/page.tsx
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
@@ -7,11 +6,11 @@ import { getKISaasContent } from '../../lib/sanity/queries'
 import styles from './ki_saas.module.css'
 
 export const metadata: Metadata = {
-  title: 'KI-Beratung & Automatisierung — intersignum',
-  description: 'KI-gestützte Prozessoptimierung, LLM-Integration und Automatisierung für Unternehmen.',
+  title: 'KI & SaaS — intersignum',
+  description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.',
 }
 
-export default async function KIBeratung() {
+export default async function KiSaas() {
   const c = await getKISaasContent()
 
   return (
@@ -35,7 +34,7 @@ export default async function KIBeratung() {
             <div className={styles.breadcrumb}>
               <Link href="/">Startseite</Link>
               <span>›</span>
-              <span>KI-Beratung</span>
+              <span>KI & SaaS</span>
             </div>
             <p className={styles.eyebrow}>{c.hero.eyebrow}</p>
             <h1>{c.hero.title}</h1>
@@ -66,47 +65,23 @@ export default async function KIBeratung() {
           </div>
         </section>
 
-        {/* TECHNOLOGIEN */}
+        {/* ABSCHNITT */}
         <section className={styles.sectionAlt}>
           <div className={styles.sectionInner}>
             <div className={styles.twoCol}>
               <div>
-                <h2>{c.tech.titel}</h2>
-                <p>{c.tech.text1}</p>
-                <div className={styles.tagGrid}>
-                  {c.tech.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
-                  ))}
-                </div>
-                <Link href="/#kontakt" className={styles.btnPrimary} style={{marginTop: '32px'}}>
+                <h2>{c.abschnitt.titel}</h2>
+                <p>{c.abschnitt.text1}</p>
+                <p>{c.abschnitt.text2}</p>
+                <Link href="/#kontakt" className={styles.btnPrimary} style={{ marginTop: '32px' }}>
                   Gespräch vereinbaren →
                 </Link>
               </div>
               <div className={styles.imageWrap}>
                 <img
                   src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80"
-                  alt="KI-Technologien"
+                  alt={c.abschnitt.titel}
                 />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ANSATZ */}
-        <section className={styles.section}>
-          <div className={styles.sectionInner}>
-            <div className={styles.twoCol}>
-              <div className={styles.imageWrap}>
-                <img
-                  src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80"
-                  alt={c.ansatz.titel}
-                />
-              </div>
-              <div>
-                <h2>{c.ansatz.titel}</h2>
-                <p>{c.ansatz.text1}</p>
-                <p>{c.ansatz.text2}</p>
-                <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
               </div>
             </div>
           </div>

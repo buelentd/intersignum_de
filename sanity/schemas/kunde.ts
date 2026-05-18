@@ -12,10 +12,9 @@ export const kunde = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'logo',
-      type: 'image',
-      title: 'Logo',
-      options: { hotspot: true },
+      name: 'logoUrl',
+      type: 'url',
+      title: 'Logo-URL (Vercel Media)',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

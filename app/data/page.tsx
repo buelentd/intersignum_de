@@ -1,4 +1,3 @@
-// app/data/page.tsx
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
@@ -66,48 +65,23 @@ export default async function Data() {
           </div>
         </section>
 
-        {/* OPEN SOURCE */}
+        {/* ABSCHNITT */}
         <section className={styles.sectionAlt}>
           <div className={styles.sectionInner}>
             <div className={styles.twoCol}>
               <div>
-                <h2>{c.opensource.titel}</h2>
-                <p>{c.opensource.text1}</p>
-                <p>{c.opensource.text2}</p>
-                <div className={styles.tagGrid}>
-                  {c.opensource.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
-                  ))}
-                </div>
-                <Link href="/#kontakt" className={styles.btnPrimary} style={{marginTop: '32px'}}>
+                <h2>{c.abschnitt.titel}</h2>
+                <p>{c.abschnitt.text1}</p>
+                <p>{c.abschnitt.text2}</p>
+                <Link href="/#kontakt" className={styles.btnPrimary} style={{ marginTop: '32px' }}>
                   Gespräch vereinbaren →
                 </Link>
               </div>
               <div className={styles.imageWrap}>
                 <img
                   src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80"
-                  alt="Open Source Data Stack"
+                  alt={c.abschnitt.titel}
                 />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* PRAXIS */}
-        <section className={styles.section}>
-          <div className={styles.sectionInner}>
-            <div className={styles.twoCol}>
-              <div className={styles.imageWrap}>
-                <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
-                  alt={c.praxis.titel}
-                />
-              </div>
-              <div>
-                <h2>{c.praxis.titel}</h2>
-                <p>{c.praxis.text1}</p>
-                <p>{c.praxis.text2}</p>
-                <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
               </div>
             </div>
           </div>

@@ -4,6 +4,7 @@ export const webentwicklung = defineType({
   name: 'webentwicklung',
   title: 'Webentwicklung',
   type: 'document',
+  __experimental_actions: ['update', 'publish'],
   fields: [
     defineField({
       name: 'hero',
@@ -15,44 +16,23 @@ export const webentwicklung = defineType({
         defineField({ name: 'subtitle', type: 'text',   title: 'Untertitel' }),
       ],
     }),
-    defineField({
-      name: 'leistungenTitel',
-      type: 'string',
-      title: 'Leistungen — Überschrift',
-    }),
+    defineField({ name: 'leistungenTitel', type: 'string', title: 'Leistungen — Überschrift' }),
     defineField({
       name: 'karten',
       type: 'array',
       title: 'Leistungskarten',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({ name: 'titel', type: 'string', title: 'Kartentitel' }),
-            defineField({ name: 'text',  type: 'text',   title: 'Kartentext' }),
-          ],
-        },
-      ],
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({ name: 'titel', type: 'string', title: 'Titel' }),
+          defineField({ name: 'text',  type: 'text',   title: 'Text' }),
+        ],
+      }],
     }),
     defineField({
-      name: 'stack',
+      name: 'abschnitt',
       type: 'object',
-      title: 'Web-Stack',
-      fields: [
-        defineField({ name: 'titel', type: 'string', title: 'Titel' }),
-        defineField({ name: 'text1', type: 'text',   title: 'Text' }),
-        defineField({
-          name: 'tags',
-          type: 'array',
-          title: 'Technologie-Tags',
-          of: [{ type: 'string' }],
-        }),
-      ],
-    }),
-    defineField({
-      name: 'skaliert',
-      type: 'object',
-      title: 'Entwicklung die skaliert',
+      title: 'Mittlerer Abschnitt',
       fields: [
         defineField({ name: 'titel', type: 'string', title: 'Titel' }),
         defineField({ name: 'text1', type: 'text',   title: 'Absatz 1' }),
@@ -69,5 +49,4 @@ export const webentwicklung = defineType({
       ],
     }),
   ],
-  __experimental_actions: ['update', 'publish'],
 })

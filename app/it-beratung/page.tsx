@@ -1,4 +1,3 @@
-// app/it-beratung/page.tsx
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
@@ -7,8 +6,8 @@ import { getITBeratungContent } from '../../lib/sanity/queries'
 import styles from './it_beratung.module.css'
 
 export const metadata: Metadata = {
-  title: 'IT-Beratung & Integration — intersignum',
-  description: 'IT-Beratung, Implementierung und Integration von SaaS-Lösungen, CRM-Systemen und Middleware in Unternehmensstrukturen.',
+  title: 'IT-Beratung — intersignum',
+  description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.',
 }
 
 export default async function ITBeratung() {
@@ -35,7 +34,7 @@ export default async function ITBeratung() {
             <div className={styles.breadcrumb}>
               <Link href="/">Startseite</Link>
               <span>›</span>
-              <span>IT-Beratung & Integration</span>
+              <span>IT-Beratung</span>
             </div>
             <p className={styles.eyebrow}>{c.hero.eyebrow}</p>
             <h1>{c.hero.title}</h1>
@@ -66,47 +65,23 @@ export default async function ITBeratung() {
           </div>
         </section>
 
-        {/* SYSTEME */}
+        {/* ABSCHNITT */}
         <section className={styles.sectionAlt}>
           <div className={styles.sectionInner}>
             <div className={styles.twoCol}>
               <div>
-                <h2>{c.systeme.titel}</h2>
-                <p>{c.systeme.text}</p>
-                <div className={styles.tagGrid}>
-                  {c.systeme.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
-                  ))}
-                </div>
-                <Link href="/#kontakt" className={styles.btnPrimary} style={{marginTop: '32px'}}>
+                <h2>{c.abschnitt.titel}</h2>
+                <p>{c.abschnitt.text1}</p>
+                <p>{c.abschnitt.text2}</p>
+                <Link href="/#kontakt" className={styles.btnPrimary} style={{ marginTop: '32px' }}>
                   Gespräch vereinbaren →
                 </Link>
               </div>
               <div className={styles.imageWrap}>
                 <img
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"
-                  alt="Systemintegration"
+                  alt={c.abschnitt.titel}
                 />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ANSATZ */}
-        <section className={styles.section}>
-          <div className={styles.sectionInner}>
-            <div className={styles.twoCol}>
-              <div className={styles.imageWrap}>
-                <img
-                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80"
-                  alt={c.ansatz.titel}
-                />
-              </div>
-              <div>
-                <h2>{c.ansatz.titel}</h2>
-                <p>{c.ansatz.text1}</p>
-                <p>{c.ansatz.text2}</p>
-                <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
               </div>
             </div>
           </div>
