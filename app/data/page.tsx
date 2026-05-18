@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
-import { LogoBlue } from '../../components/Logo'
+import ServiceHeader from '../../components/ServiceHeader'
 import { getDataContent } from '../../lib/sanity/queries'
 import styles from './data.module.css'
 
@@ -15,17 +15,7 @@ export default async function Data() {
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <Link href="/"><LogoBlue height={22} /></Link>
-          <nav className={styles.nav}>
-            <Link href="/#leistungen">Leistungen</Link>
-            <Link href="/#kunden">Referenzen</Link>
-            <Link href="/#ansatz">Über uns</Link>
-            <Link href="/#kontakt" className={styles.btnNav}>Kontakt aufnehmen</Link>
-          </nav>
-        </div>
-      </header>
+      <ServiceHeader current="/data" />
 
       <main>
         {/* HERO */}
