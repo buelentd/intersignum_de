@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
 import { LogoBlue } from '../../components/Logo'
-import { getDataContent } from '../../lib/notion'
+import { getDataContent } from '../../lib/sanity/queries'
 import styles from './data.module.css'
 
 export const metadata: Metadata = {
