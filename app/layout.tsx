@@ -4,6 +4,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://intersignum.de'),
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   title: {
     default: 'intersignum — IT-Projekte, die in time und in budget bleiben.',
     template: '%s — intersignum',

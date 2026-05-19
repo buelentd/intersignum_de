@@ -17,6 +17,64 @@ const client = createClient({
 })
 
 const docs = [
+  // ─── Startseite ────────────────────────────────────────────────────────────
+  {
+    _id:   'startseite',
+    _type: 'startseite',
+    hero: {
+      subLabel:     'IT-Beratung · Webentwicklung · KI & SaaS · Berlin',
+      h1Zeile1:     'IT-Projekte,',
+      h1Hervor1:    'in time',
+      h1Hervor2:    'in budget',
+      h1Zeile4:     'bleiben.',
+      text:         'Wir begleiten Unternehmen bei anspruchsvollen IT-Projekten — agil, technologieunabhängig und mit über zwölf Jahren Erfahrung. Von der Strategie bis zur Umsetzung.',
+      ctaPrimary:   'Projekt besprechen →',
+      ctaSekundaer: 'Leistungen ansehen',
+    },
+    stats: [
+      { _key: 's1', num: '12+',   label: 'Jahre Erfahrung in\nIT-Beratung & Entwicklung' },
+      { _key: 's2', num: '50+',   label: 'erfolgreich abgeschlossene\nProjekte' },
+      { _key: 's3', num: '100 %', label: 'herstellerunabhängige\nTechnologieberatung' },
+    ],
+    leistungen: {
+      h2: 'Was wir für Sie tun',
+      karten: [
+        { _key: 'l1', num: '01', title: 'IT-Beratung',       href: '/it-beratung',    text: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.' },
+        { _key: 'l2', num: '02', title: 'Webentwicklung',     href: '/webentwicklung', text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
+        { _key: 'l3', num: '03', title: 'KI & SaaS',          href: '/ki-saas',        text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
+        { _key: 'l4', num: '04', title: 'Data & Integration', href: '/data',           text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines — auf Open-Source-Technologien ohne Vendor Lock-in.' },
+      ],
+    },
+    kunden: {
+      eyebrow: 'Referenzen',
+      h2:      'Vertrauen seit 2013',
+    },
+    ansatz: {
+      h2: 'Wie wir arbeiten',
+      schritte: [
+        { _key: 'a1', num: '01', title: 'Verstehen', text: 'Wir analysieren Ihr Business und seine Prozesse. Keine Hersteller-Bindungen — nur unabhängiges, technologisches Know-how in Ihrem Interesse.' },
+        { _key: 'a2', num: '02', title: 'Planen',    text: 'Agile Sprints statt großem Knall. Scope und Budget werden gemeinsam in regelmäßigen Sessions verfeinert — transparent und nachvollziehbar.' },
+        { _key: 'a3', num: '03', title: 'Umsetzen',  text: 'State-of-the-art Technologie, pragmatisch angewandt. Von klassischer Webentwicklung bis zur Integration moderner KI-Lösungen.' },
+        { _key: 'a4', num: '04', title: 'Feiern',    text: 'Der einzige „Big Bang" kommt vom Sektkorken am Ende eines erfolgreichen Projekts. Das ist unser Versprechen.' },
+      ],
+      zitat: {
+        text: 'IT projects stay in time and in budget if you do them agile. Not joking.',
+        sub:  'Wir verstehen Ihr Business und seine Prozesse. Sie profitieren von unserem unabhängigen Technologie-Know-how — ohne Partnerschaftsbindungen.',
+        tags: ['Agile', 'Berlin', 'Seit 2013', 'Herstellerunabhängig'],
+      },
+    },
+    kiBanner: {
+      titel: 'Neu: KI-gestützte Lösungen für Ihr Unternehmen',
+      text:  'intersignum entwickelt maßgeschneiderte KI-Anwendungen und SaaS-Produkte — praxisnah, DSGVO-konform und nahtlos in Ihre bestehenden Prozesse integriert.',
+      cta:   'Jetzt Projekt besprechen →',
+    },
+    kontakt: {
+      h2:      'Lassen Sie uns sprechen.',
+      intro:   'Schildern Sie uns Ihr Vorhaben — unverbindlich und kostenlos. Wir melden uns innerhalb eines Werktages.',
+      adresse: 'Pasewalker Str. 15, 13127 Berlin',
+    },
+  },
+
   // ─── IT-Beratung ───────────────────────────────────────────────────────────
   {
     _id:  'itBeratung',

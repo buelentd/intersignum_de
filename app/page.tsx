@@ -1,5 +1,3 @@
-// app/page.tsx
-// Startseite intersignum.de
 import Link from 'next/link'
 import Image from 'next/image'
 import Footer from '../components/Footer'
@@ -7,23 +5,20 @@ import { LogoBlue } from '../components/Logo'
 import KontaktFormular from '../components/Kontaktformular'
 import ClientEffects from '../components/ClientEffects'
 import styles from './page.module.css'
+import { getStartseiteContent, getKundenContent } from '../lib/sanity/queries'
 
-const kunden = [
-  { name: 'Hyundai Motor Europe', logo: '/logos/hyundai logo.svg' },
-  { name: 'DZ-Bank',              logo: '/logos/DZ Bank.png' },
-  { name: 'Abgeordnetenwatch.de', logo: '/logos/abgeordnetenwatch_logo.png' },
-  { name: 'DAV Summit Club',      logo: '/logos/DAV Summit Club.jpg' },
-  { name: 'Springer Professional',logo: '/logos/springerprofessional_Logo.png' },
-  { name: 'mail.de',              logo: '/logos/Mail.de Logo.png' },
-  { name: 'gesund.de',            logo: '/logos/gesund-de-logo.jpg' },
-  { name: 'krone.at',             logo: '/logos/krone_at.jpg' },
-  { name: 'Phoenix',              logo: '/logos/phoenix logo.png' },
-  { name: 'United Internet Media',logo: '/logos/UIM_Logo.png' },
-  { name: 'Vaventus AG',          logo: '/logos/VAVENTUS_AG_logo.png' },
-  { name: 'HanseMerkur',          logo: '/logos/Ein-Unternehmen-der-HanseMerkur_gross.jpg' },
-]
+export const revalidate = 60
 
-export default function Home() {
+export default async function Home() {
+  const [cms, kunden] = await Promise.all([
+    getStartseiteContent(),
+    getKundenContent(),
+  ])
+
+  const h = cms.hero
+  const l = cms.leistungen
+  const a = cms.ansatz
+
   return (
     <>
       <ClientEffects />
@@ -50,28 +45,22 @@ export default function Home() {
           <div className={styles.heroGlow} id="hero-glow" aria-hidden="true" />
           <section className={styles.hero} id="hero">
             <div className={styles.heroLeft}>
-              <p className={styles.heroSubLabel}>IT-Beratung · Webentwicklung · KI &amp; SaaS · Berlin</p>
+              <p className={styles.heroSubLabel}>{h.subLabel}</p>
               <h1 className={styles.h1}>
-                IT-Projekte,<br />
-                die <em>in time</em><br />
-                und <em>in budget</em><br />
-                bleiben.
+                {h.h1Zeile1}<br />
+                die <em>{h.h1Hervor1}</em><br />
+                und <em>{h.h1Hervor2}</em><br />
+                {h.h1Zeile4}
               </h1>
-              <p className={styles.heroText}>
-                Wir begleiten Unternehmen bei anspruchsvollen IT-Projekten — agil, technologieunabhängig und mit über zwölf Jahren Erfahrung. Von der Strategie bis zur Umsetzung.
-              </p>
+              <p className={styles.heroText}>{h.text}</p>
               <div className={styles.heroCtas}>
-                <Link href="#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
-                <Link href="#leistungen" className={styles.btnText}>Leistungen ansehen</Link>
+                <Link href="#kontakt" className={styles.btnPrimary}>{h.ctaPrimary}</Link>
+                <Link href="#leistungen" className={styles.btnText}>{h.ctaSekundaer}</Link>
               </div>
             </div>
 
             <div className={styles.heroStats}>
-              {[
-                { num: '12+',   label: 'Jahre Erfahrung in\nIT-Beratung & Entwicklung' },
-                { num: '50+',   label: 'erfolgreich abgeschlossene\nProjekte' },
-                { num: '100 %', label: 'herstellerunabhängige\nTechnologieberatung' },
-              ].map((s) => (
+              {cms.stats.map((s) => (
                 <div key={s.num} className={styles.statItem}>
                   <div className={styles.statNum}>{s.num}</div>
                   <div className={styles.statLabel}>{s.label}</div>
@@ -88,19 +77,14 @@ export default function Home() {
           <section className={`${styles.leistungen} reveal`}>
             <div className={`${styles.sectionHeader} reveal`}>
               <p className={styles.eyebrow}>Leistungen</p>
-              <h2 className={styles.h2}>Was wir für Sie tun</h2>
+              <h2 className={styles.h2}>{l.h2}</h2>
             </div>
             <div className={styles.leistungenGrid}>
-              {[
-                { num: '01', title: 'IT-Beratung',       href: '/it-beratung',    text: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.' },
-                { num: '02', title: 'Webentwicklung',     href: '/webentwicklung', text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
-                { num: '03', title: 'KI & SaaS',          href: '/ki-saas',        text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
-                { num: '04', title: 'Data & Integration', href: '/data',           text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines — auf Open-Source-Technologien ohne Vendor Lock-in.' },
-              ].map((l, i) => (
-                <Link key={l.num} href={l.href} className={`${styles.leistungCard} reveal reveal-delay-${i + 1}`}>
-                  <div className={styles.leistungNum}>{l.num}</div>
-                  <div className={styles.leistungTitle}>{l.title}</div>
-                  <p className={styles.leistungText}>{l.text}</p>
+              {l.karten.map((karte, i) => (
+                <Link key={karte.num} href={karte.href} className={`${styles.leistungCard} reveal reveal-delay-${i + 1}`}>
+                  <div className={styles.leistungNum}>{karte.num}</div>
+                  <div className={styles.leistungTitle}>{karte.title}</div>
+                  <p className={styles.leistungText}>{karte.text}</p>
                   <span className={styles.leistungLink}>Mehr erfahren →</span>
                 </Link>
               ))}
@@ -114,8 +98,8 @@ export default function Home() {
         <div className={styles.kundenWrap} id="kunden">
           <div className={styles.kundenInner}>
             <div className={`${styles.sectionHeader} reveal`}>
-              <p className={styles.eyebrow}>Referenzen</p>
-              <h2 className={styles.h2}>Vertrauen seit 2013</h2>
+              <p className={styles.eyebrow}>{cms.kunden.eyebrow}</p>
+              <h2 className={styles.h2}>{cms.kunden.h2}</h2>
             </div>
             <div className={styles.kundenGrid}>
               {kunden.map((k, i) => (
@@ -142,15 +126,10 @@ export default function Home() {
             <div>
               <div className={`${styles.sectionHeader} reveal`}>
                 <p className={styles.eyebrow}>Unser Ansatz</p>
-                <h2 className={styles.h2}>Wie wir arbeiten</h2>
+                <h2 className={styles.h2}>{a.h2}</h2>
               </div>
               <div className={`${styles.ansatzSteps} reveal`}>
-                {[
-                  { num: '01', title: 'Verstehen', text: 'Wir analysieren Ihr Business und seine Prozesse. Keine Hersteller-Bindungen — nur unabhängiges, technologisches Know-how in Ihrem Interesse.' },
-                  { num: '02', title: 'Planen',    text: 'Agile Sprints statt großem Knall. Scope und Budget werden gemeinsam in regelmäßigen Sessions verfeinert — transparent und nachvollziehbar.' },
-                  { num: '03', title: 'Umsetzen',  text: 'State-of-the-art Technologie, pragmatisch angewandt. Von klassischer Webentwicklung bis zur Integration moderner KI-Lösungen.' },
-                  { num: '04', title: 'Feiern',    text: 'Der einzige „Big Bang" kommt vom Sektkorken am Ende eines erfolgreichen Projekts. Das ist unser Versprechen.' },
-                ].map((s) => (
+                {a.schritte.map((s) => (
                   <div key={s.num} className={styles.step}>
                     <div className={styles.stepNum}>{s.num}</div>
                     <div>
@@ -165,10 +144,10 @@ export default function Home() {
             <div className={`${styles.ansatzRight} reveal reveal-delay-2`}>
               <div className={styles.zitatBox}>
                 <span className={styles.zitatMark}>&ldquo;</span>
-                <p className={styles.zitatText}>IT projects stay in time and in budget if you do them agile. Not joking.</p>
-                <p className={styles.zitatSub}>Wir verstehen Ihr Business und seine Prozesse. Sie profitieren von unserem unabhängigen Technologie-Know-how — ohne Partnerschaftsbindungen.</p>
+                <p className={styles.zitatText}>{a.zitat.text}</p>
+                <p className={styles.zitatSub}>{a.zitat.sub}</p>
                 <div className={styles.zitatTags}>
-                  {['Agile', 'Berlin', 'Seit 2013', 'Herstellerunabhängig'].map(t => (
+                  {a.zitat.tags.map((t) => (
                     <span key={t} className={styles.zitatTag}>{t}</span>
                   ))}
                 </div>
@@ -181,10 +160,10 @@ export default function Home() {
         <div className={`${styles.kiBanner} reveal`}>
           <div className={styles.kiBannerInner}>
             <div className={styles.kiBannerText}>
-              <h3>Neu: KI-gestützte Lösungen für Ihr Unternehmen</h3>
-              <p>intersignum entwickelt maßgeschneiderte KI-Anwendungen und SaaS-Produkte — praxisnah, DSGVO-konform und nahtlos in Ihre bestehenden Prozesse integriert.</p>
+              <h3>{cms.kiBanner.titel}</h3>
+              <p>{cms.kiBanner.text}</p>
             </div>
-            <Link href="#kontakt" className={styles.btnPrimary}>Jetzt Projekt besprechen →</Link>
+            <Link href="#kontakt" className={styles.btnPrimary}>{cms.kiBanner.cta}</Link>
           </div>
         </div>
 
@@ -193,10 +172,8 @@ export default function Home() {
           <section className={styles.kontaktSection}>
             <div className={`${styles.kontaktLeft} reveal`}>
               <p className={styles.eyebrow}>Kontakt</p>
-              <h2 className={styles.h2}>Lassen Sie uns sprechen.</h2>
-              <p className={styles.kontaktIntro}>
-                Schildern Sie uns Ihr Vorhaben — unverbindlich und kostenlos. Wir melden uns innerhalb eines Werktages.
-              </p>
+              <h2 className={styles.h2}>{cms.kontakt.h2}</h2>
+              <p className={styles.kontaktIntro}>{cms.kontakt.intro}</p>
               <div className={styles.kontaktMeta}>
                 <div className={styles.kontaktMetaItem}>
                   <div className={styles.kontaktMetaIcon}>
@@ -204,7 +181,7 @@ export default function Home() {
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                     </svg>
                   </div>
-                  <span>Pasewalker Str. 15, 13127 Berlin</span>
+                  <span>{cms.kontakt.adresse}</span>
                 </div>
                 <div className={styles.kontaktMetaItem}>
                   <div className={styles.kontaktMetaIcon}>
