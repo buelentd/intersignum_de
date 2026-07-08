@@ -6,15 +6,41 @@ import { getWebentwicklungContent } from '../../lib/sanity/queries'
 import styles from './web.module.css'
 
 export const metadata: Metadata = {
-  title: 'Webentwicklung — intersignum',
+  title: { absolute: 'Webentwicklung — intersignum' },
   description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.',
+  alternates: { canonical: 'https://intersignum.de/webentwicklung' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/webentwicklung',
+    siteName: 'intersignum',
+    title: 'Webentwicklung — intersignum',
+    description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Webentwicklung — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Webentwicklung — intersignum',
+    description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default async function Webentwicklung() {
   const c = await getWebentwicklungContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'Webentwicklung', item: 'https://intersignum.de/webentwicklung' },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <ServiceHeader current="/webentwicklung" />
 
       <main>

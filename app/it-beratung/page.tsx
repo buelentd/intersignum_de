@@ -6,15 +6,41 @@ import { getITBeratungContent } from '../../lib/sanity/queries'
 import styles from './it_beratung.module.css'
 
 export const metadata: Metadata = {
-  title: 'IT-Beratung — intersignum',
+  title: { absolute: 'IT-Beratung — intersignum' },
   description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.',
+  alternates: { canonical: 'https://intersignum.de/it-beratung' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/it-beratung',
+    siteName: 'intersignum',
+    title: 'IT-Beratung — intersignum',
+    description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'IT-Beratung — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IT-Beratung — intersignum',
+    description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default async function ITBeratung() {
   const c = await getITBeratungContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'IT-Beratung', item: 'https://intersignum.de/it-beratung' },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <ServiceHeader current="/it-beratung" />
 
       <main>

@@ -6,15 +6,41 @@ import { getKISaasContent } from '../../lib/sanity/queries'
 import styles from './ki_saas.module.css'
 
 export const metadata: Metadata = {
-  title: 'KI & SaaS — intersignum',
+  title: { absolute: 'KI & SaaS — intersignum' },
   description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.',
+  alternates: { canonical: 'https://intersignum.de/ki-saas' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/ki-saas',
+    siteName: 'intersignum',
+    title: 'KI & SaaS — intersignum',
+    description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'KI & SaaS — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'KI & SaaS — intersignum',
+    description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default async function KiSaas() {
   const c = await getKISaasContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'KI & SaaS', item: 'https://intersignum.de/ki-saas' },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <ServiceHeader current="/ki-saas" />
 
       <main>

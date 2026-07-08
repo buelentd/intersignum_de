@@ -6,15 +6,41 @@ import { getDataContent } from '../../lib/sanity/queries'
 import styles from './data.module.css'
 
 export const metadata: Metadata = {
-  title: 'Data & Integration — intersignum',
+  title: { absolute: 'Data & Integration — intersignum' },
   description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt und Open-Source-Technologien.',
+  alternates: { canonical: 'https://intersignum.de/data' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/data',
+    siteName: 'intersignum',
+    title: 'Data & Integration — intersignum',
+    description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt und Open-Source-Technologien.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Data & Integration — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Data & Integration — intersignum',
+    description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt.',
+    images: ['/og-image.png'],
+  },
 }
 
 export default async function Data() {
   const c = await getDataContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'Data & Integration', item: 'https://intersignum.de/data' },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <ServiceHeader current="/data" />
 
       <main>
