@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     siteName: 'intersignum',
     title: 'IT-Beratung Berlin — herstellerunabhängig | intersignum',
     description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie — seit 2013, aus Berlin.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'IT-Beratung — intersignum' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'IT-Beratung — intersignum' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'IT-Beratung Berlin — herstellerunabhängig | intersignum',
     description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
 }
 

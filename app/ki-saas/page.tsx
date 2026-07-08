@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     siteName: 'intersignum',
     title: 'KI & SaaS — intersignum',
     description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'KI & SaaS — intersignum' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'KI & SaaS — intersignum' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'KI & SaaS — intersignum',
     description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
 }
 

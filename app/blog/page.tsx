@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: 'intersignum',
     title: 'Blog — intersignum',
     description: 'Praxiswissen zu IT-Projektmanagement, Digitalisierung und der Schnittstelle zwischen Business und IT.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Blog — intersignum' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Blog — intersignum' }],
   },
 }
 

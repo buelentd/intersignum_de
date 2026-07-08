@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     siteName: 'intersignum',
     title: 'Webentwicklung — intersignum',
     description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Webentwicklung — intersignum' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Webentwicklung — intersignum' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Webentwicklung — intersignum',
     description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
 }
 

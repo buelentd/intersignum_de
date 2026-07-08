@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     siteName: 'intersignum',
     title: 'Data & Integration — intersignum',
     description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt und Open-Source-Technologien.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Data & Integration — intersignum' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Data & Integration — intersignum' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Data & Integration — intersignum',
     description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
 }
 

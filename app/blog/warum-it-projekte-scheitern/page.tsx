@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: 'intersignum',
     title: 'Warum IT-Projekte scheitern — und was dagegen hilft',
     description: 'Die häufigsten Fehler in IT-Projekten aus 12 Jahren Praxis — mit konkreten Gegenmaßnahmen.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Warum IT-Projekte scheitern' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Warum IT-Projekte scheitern' }],
     publishedTime: '2026-06-15',
     authors: ['intersignum'],
   },
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Warum IT-Projekte scheitern — und was dagegen hilft',
     description: 'Die häufigsten Fehler in IT-Projekten aus 12 Jahren Praxis.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
 }
 
