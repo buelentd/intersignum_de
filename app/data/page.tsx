@@ -6,8 +6,8 @@ import { getDataContent } from '../../lib/sanity/queries'
 import styles from './data.module.css'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Data & Integration — intersignum' },
-  description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt und Open-Source-Technologien.',
+  title: { absolute: 'Data & Integration — API, Data Warehouse, ETL | intersignum' },
+  description: 'Datenarchitektur und Systemintegration: REST API Design, Data Warehouse, ETL/ELT mit dbt. Open-Source, herstellerunabhängig, nachhaltig gebaut.',
   alternates: { canonical: 'https://intersignum.de/data' },
   openGraph: {
     type: 'website',
@@ -38,9 +38,20 @@ export default async function Data() {
     ],
   }
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Data & Integration',
+    description: 'Datenarchitektur und Systemintegration: REST API Design, Data Warehouse, ETL/ELT Pipelines mit dbt.',
+    provider: { '@type': 'ProfessionalService', name: 'intersignum', url: 'https://intersignum.de' },
+    areaServed: 'DE',
+    serviceType: 'Data Engineering und API Integration',
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <ServiceHeader current="/data" />
 
       <main>

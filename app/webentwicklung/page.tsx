@@ -6,8 +6,8 @@ import { getWebentwicklungContent } from '../../lib/sanity/queries'
 import styles from './web.module.css'
 
 export const metadata: Metadata = {
-  title: { absolute: 'Webentwicklung — intersignum' },
-  description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.',
+  title: { absolute: 'Webentwicklung Berlin — Next.js & moderne Technologien | intersignum' },
+  description: 'Professionelle Webentwicklung in Berlin: Next.js, React, performante Web-Applikationen. Konzeption, Entwicklung und Betrieb aus einer Hand — ohne Vendor Lock-in.',
   alternates: { canonical: 'https://intersignum.de/webentwicklung' },
   openGraph: {
     type: 'website',
@@ -38,9 +38,20 @@ export default async function Webentwicklung() {
     ],
   }
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Webentwicklung',
+    description: 'Professionelle Webentwicklung in Berlin: Next.js, React, performante Web-Applikationen.',
+    provider: { '@type': 'ProfessionalService', name: 'intersignum', url: 'https://intersignum.de' },
+    areaServed: 'DE',
+    serviceType: 'Webentwicklung',
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <ServiceHeader current="/webentwicklung" />
 
       <main>

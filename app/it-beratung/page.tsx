@@ -6,22 +6,22 @@ import { getITBeratungContent } from '../../lib/sanity/queries'
 import styles from './it_beratung.module.css'
 
 export const metadata: Metadata = {
-  title: { absolute: 'IT-Beratung — intersignum' },
-  description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.',
+  title: { absolute: 'IT-Beratung Berlin — herstellerunabhängig | intersignum' },
+  description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie — seit 2013, aus Berlin, ohne Provisionsmodelle.',
   alternates: { canonical: 'https://intersignum.de/it-beratung' },
   openGraph: {
     type: 'website',
     locale: 'de_DE',
     url: 'https://intersignum.de/it-beratung',
     siteName: 'intersignum',
-    title: 'IT-Beratung — intersignum',
-    description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.',
+    title: 'IT-Beratung Berlin — herstellerunabhängig | intersignum',
+    description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie — seit 2013, aus Berlin.',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'IT-Beratung — intersignum' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IT-Beratung — intersignum',
-    description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie.',
+    title: 'IT-Beratung Berlin — herstellerunabhängig | intersignum',
+    description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie.',
     images: ['/og-image.png'],
   },
 }
@@ -38,9 +38,20 @@ export default async function ITBeratung() {
     ],
   }
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'IT-Beratung',
+    description: 'Herstellerunabhängige IT-Beratung: Agile Projektsteuerung, Prozessanalyse und Technologiestrategie.',
+    provider: { '@type': 'ProfessionalService', name: 'intersignum', url: 'https://intersignum.de' },
+    areaServed: 'DE',
+    serviceType: 'IT-Beratung',
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <ServiceHeader current="/it-beratung" />
 
       <main>

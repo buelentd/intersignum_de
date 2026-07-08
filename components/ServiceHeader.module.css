@@ -12,6 +12,7 @@
 .nav { display: flex; align-items: center; gap: 28px; }
 .nav > a { font-size: 15px; color: #4A5E6D; text-decoration: none; }
 .nav > a:hover { color: #0C3D5E; }
+.activeNav { color: #D45F0A !important; font-weight: 600; }
 
 .dropdown { position: relative; }
 .dropdownTrigger {
