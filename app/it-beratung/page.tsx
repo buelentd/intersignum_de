@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
@@ -6,8 +8,8 @@ import { getITBeratungContent } from '../../lib/sanity/queries'
 import styles from './it_beratung.module.css'
 
 export const metadata: Metadata = {
-  title: 'IT-Beratung — intersignum',
-  description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.',
+  title: 'IT-Beratung Berlin — intersignum',
+  description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie seit 2013. Ihre IT-Projekte bleiben im Rahmen — ohne Überraschungen.',
 }
 
 export default async function ITBeratung() {
@@ -73,6 +75,28 @@ export default async function ITBeratung() {
                   alt={c.abschnitt.titel}
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* VERWANDTE LEISTUNGEN */}
+        <section className={styles.section}>
+          <div className={styles.sectionInner}>
+            <h2>Verwandte Leistungen</h2>
+            <div className={styles.grid} style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+              {[
+                { href: '/it-projektmanagement', num: '01a', titel: 'IT-Projektmanagement', text: 'Dedizierte Projektleitung für komplexe Vorhaben — mit klarer Verantwortung und Reporting.' },
+                { href: '/webentwicklung', num: '02', titel: 'Webentwicklung', text: 'Von der Konzeption bis zum Betrieb — professionelle Web-Applikationen aus einer Hand.' },
+                { href: '/ki-saas', num: '03', titel: 'KI & SaaS', text: 'Maßgeschneiderte KI-Anwendungen und SaaS-Produkte für Ihre Prozesse.' },
+                { href: '/data', num: '04', titel: 'Data & Integration', text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines.' },
+              ].map((l) => (
+                <Link key={l.href} href={l.href} className={styles.card} style={{ textDecoration: 'none', display: 'block' }}>
+                  <div className={styles.cardNum}>{l.num}</div>
+                  <h3>{l.titel}</h3>
+                  <p>{l.text}</p>
+                  <span style={{ fontSize: 14, color: '#D45F0A', fontWeight: 600, marginTop: 12, display: 'inline-block' }}>Mehr erfahren →</span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

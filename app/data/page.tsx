@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
@@ -6,8 +8,8 @@ import { getDataContent } from '../../lib/sanity/queries'
 import styles from './data.module.css'
 
 export const metadata: Metadata = {
-  title: 'Data & Integration — intersignum',
-  description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt und Open-Source-Technologien.',
+  title: 'Data & Integration Berlin — intersignum',
+  description: 'REST API Design, Data Warehouse Architektur und ETL/ELT-Pipelines mit Open-Source-Technologien. Kein Vendor Lock-in.',
 }
 
 export default async function Data() {
@@ -73,6 +75,28 @@ export default async function Data() {
                   alt={c.abschnitt.titel}
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* VERWANDTE LEISTUNGEN */}
+        <section className={styles.section}>
+          <div className={styles.sectionInner}>
+            <h2>Verwandte Leistungen</h2>
+            <div className={styles.grid} style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+              {[
+                { href: '/it-beratung', num: '01', titel: 'IT-Beratung', text: 'Unabhängige Technologiestrategie für Ihre Daten- und Integrationsarchitektur.' },
+                { href: '/webentwicklung', num: '02', titel: 'Webentwicklung', text: 'Frontend und Backend, das Ihre APIs und Datenpipelines sinnvoll nutzt.' },
+                { href: '/ki-saas', num: '03', titel: 'KI & SaaS', text: 'KI-Systeme brauchen saubere Daten — wir liefern beides.' },
+                { href: '/it-projektmanagement', num: '01a', titel: 'IT-Projektmanagement', text: 'Strukturierte Steuerung komplexer Daten- und Integrationsprojekte.' },
+              ].map((l) => (
+                <Link key={l.href} href={l.href} className={styles.card} style={{ textDecoration: 'none', display: 'block' }}>
+                  <div className={styles.cardNum}>{l.num}</div>
+                  <h3>{l.titel}</h3>
+                  <p>{l.text}</p>
+                  <span style={{ fontSize: 14, color: '#D45F0A', fontWeight: 600, marginTop: 12, display: 'inline-block' }}>Mehr erfahren →</span>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
