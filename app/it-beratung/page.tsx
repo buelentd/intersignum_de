@@ -114,6 +114,19 @@ export default async function ITBeratung() {
           </div>
         </section>
 
+        {/* Verwandte Leistungen */}
+        <section className={styles.related}>
+          <div className={styles.sectionInner}>
+            <p className={styles.eyebrow}>Weitere Leistungen</p>
+            <div className={styles.relatedLinks}>
+              <Link href="/it-projektmanagement">IT-Projektmanagement — Schnittstelle zwischen Business und IT →</Link>
+              <Link href="/webentwicklung">Webentwicklung →</Link>
+              <Link href="/ki-saas">KI & SaaS →</Link>
+              <Link href="/data">Data & Integration →</Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.sectionInner}>

@@ -311,6 +311,31 @@ export default function ITprojektmanagement() {
           </div>
         </section>
 
+        {/* Weitere Leistungen */}
+        <section className={styles.related}>
+          <div className={styles.sectionInner}>
+            <h2>Weitere Leistungen</h2>
+            <div className={styles.relatedGrid}>
+              <Link href="/it-beratung" className={styles.relatedCard}>
+                <strong>IT-Beratung</strong>
+                <p>Unabhängige Technologiestrategie ohne Hersteller-Bindung.</p>
+              </Link>
+              <Link href="/webentwicklung" className={styles.relatedCard}>
+                <strong>Webentwicklung</strong>
+                <p>Websites und Web-Applikationen aus einer Hand.</p>
+              </Link>
+              <Link href="/ki-saas" className={styles.relatedCard}>
+                <strong>KI & SaaS</strong>
+                <p>KI-gestützte Lösungen und Automatisierung für Ihre Prozesse.</p>
+              </Link>
+              <Link href="/data" className={styles.relatedCard}>
+                <strong>Data & Integration</strong>
+                <p>APIs, Data Warehouse und systemübergreifende Datenpipelines.</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.sectionInner}>
