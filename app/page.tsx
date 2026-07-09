@@ -24,8 +24,30 @@ const kunden = [
 ]
 
 export default function Home() {
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'intersignum',
+    url: 'https://intersignum.de',
+    description: 'IT-Beratung, IT-Projektmanagement und Webentwicklung aus Berlin. Schnittstelle zwischen Business und IT.',
+    publisher: {
+      '@type': 'ProfessionalService',
+      name: 'intersignum',
+      url: 'https://intersignum.de',
+      foundingDate: '2013',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Pasewalker Str. 15',
+        addressLocality: 'Berlin',
+        postalCode: '13127',
+        addressCountry: 'DE',
+      },
+    },
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <ClientEffects />
 
       {/* ─── HEADER ─── */}
@@ -92,10 +114,11 @@ export default function Home() {
             </div>
             <div className={styles.leistungenGrid}>
               {[
-                { num: '01', title: 'IT-Beratung',       href: '/it-beratung',    text: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.' },
-                { num: '02', title: 'Webentwicklung',     href: '/webentwicklung', text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
-                { num: '03', title: 'KI & SaaS',          href: '/ki-saas',        text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
-                { num: '04', title: 'Data & Integration', href: '/data',           text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines — auf Open-Source-Technologien ohne Vendor Lock-in.' },
+                { num: '01', title: 'IT-Projektmanagement', href: '/it-projektmanagement', text: 'Die Schnittstelle zwischen Business und IT. Wir übersetzen Geschäftsanforderungen in technische Lösungen — und umgekehrt. In time, in budget.' },
+                { num: '02', title: 'IT-Beratung',          href: '/it-beratung',          text: 'Unabhängige Technologiestrategie und Prozessanalyse ohne Hersteller-Bindung. Beratung ausschließlich in Ihrem Interesse.' },
+                { num: '03', title: 'Webentwicklung',        href: '/webentwicklung',       text: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.' },
+                { num: '04', title: 'KI & SaaS',             href: '/ki-saas',              text: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.' },
+                { num: '05', title: 'Data & Integration',    href: '/data',                 text: 'REST APIs, Data Warehouse Architektur und systemübergreifende Datenpipelines — auf Open-Source-Technologien ohne Vendor Lock-in.' },
               ].map((l, i) => (
                 <Link key={l.num} href={l.href} className={`${styles.leistungCard} reveal reveal-delay-${i + 1}`}>
                   <div className={styles.leistungNum}>{l.num}</div>
@@ -175,6 +198,25 @@ export default function Home() {
               </div>
             </div>
           </section>
+        </div>
+
+        {/* ─── BLOG TEASER ─── */}
+        <div className={`${styles.blogTeaser} reveal`}>
+          <div className={styles.blogTeaserInner}>
+            <div className={styles.sectionHeader}>
+              <p className={styles.eyebrow}>Aus der Praxis</p>
+              <h2 className={styles.h2}>Was wirklich funktioniert</h2>
+            </div>
+            <div className={styles.blogTeaserGrid}>
+              <Link href="/blog/warum-it-projekte-scheitern" className={styles.blogTeaserCard}>
+                <span className={styles.blogTeaserKat}>Projektmanagement</span>
+                <h3>Warum IT-Projekte scheitern — und was dagegen hilft</h3>
+                <p>Die häufigsten Muster aus 50+ Projekten. Konkret, ohne Consulting-Sprech.</p>
+                <span className={styles.blogTeaserLink}>Weiterlesen →</span>
+              </Link>
+            </div>
+            <Link href="/blog" className={styles.blogTeaserAll}>Alle Artikel ansehen →</Link>
+          </div>
         </div>
 
         {/* ─── KI BANNER ─── */}

@@ -6,15 +6,52 @@ import { getITBeratungContent } from '../../lib/sanity/queries'
 import styles from './it_beratung.module.css'
 
 export const metadata: Metadata = {
-  title: 'IT-Beratung — intersignum',
-  description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie. Ihre Projekte bleiben im Rahmen — ohne Überraschungen.',
+  title: { absolute: 'IT-Beratung Berlin — herstellerunabhängig | intersignum' },
+  description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie — seit 2013, aus Berlin, ohne Provisionsmodelle.',
+  alternates: { canonical: 'https://intersignum.de/it-beratung' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/it-beratung',
+    siteName: 'intersignum',
+    title: 'IT-Beratung Berlin — herstellerunabhängig | intersignum',
+    description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie — seit 2013, aus Berlin.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'IT-Beratung — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IT-Beratung Berlin — herstellerunabhängig | intersignum',
+    description: 'IT-Beratung ohne Eigeninteresse. Agile Projektsteuerung, Prozessanalyse und Technologiestrategie.',
+    images: ['/opengraph-image'],
+  },
 }
 
 export default async function ITBeratung() {
   const c = await getITBeratungContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'IT-Beratung', item: 'https://intersignum.de/it-beratung' },
+    ],
+  }
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'IT-Beratung',
+    description: 'Herstellerunabhängige IT-Beratung: Agile Projektsteuerung, Prozessanalyse und Technologiestrategie.',
+    provider: { '@type': 'ProfessionalService', name: 'intersignum', url: 'https://intersignum.de' },
+    areaServed: 'DE',
+    serviceType: 'IT-Beratung',
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <ServiceHeader current="/it-beratung" />
 
       <main>
@@ -73,6 +110,19 @@ export default async function ITBeratung() {
                   alt={c.abschnitt.titel}
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Verwandte Leistungen */}
+        <section className={styles.related}>
+          <div className={styles.sectionInner}>
+            <p className={styles.eyebrow}>Weitere Leistungen</p>
+            <div className={styles.relatedLinks}>
+              <Link href="/it-projektmanagement">IT-Projektmanagement — Schnittstelle zwischen Business und IT →</Link>
+              <Link href="/webentwicklung">Webentwicklung →</Link>
+              <Link href="/ki-saas">KI & SaaS →</Link>
+              <Link href="/data">Data & Integration →</Link>
             </div>
           </div>
         </section>

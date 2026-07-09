@@ -3,10 +3,11 @@ import { LogoBlue } from './Logo'
 import styles from './ServiceHeader.module.css'
 
 const leistungen = [
-  { href: '/it-beratung',    label: 'IT-Beratung' },
-  { href: '/webentwicklung', label: 'Webentwicklung' },
-  { href: '/ki-saas',        label: 'KI & SaaS' },
-  { href: '/data',           label: 'Data & Integration' },
+  { href: '/it-projektmanagement', label: 'IT-Projektmanagement' },
+  { href: '/it-beratung',          label: 'IT-Beratung' },
+  { href: '/webentwicklung',       label: 'Webentwicklung' },
+  { href: '/ki-saas',              label: 'KI & SaaS' },
+  { href: '/data',                 label: 'Data & Integration' },
 ]
 
 export default function ServiceHeader({ current }: { current: string }) {
@@ -31,6 +32,7 @@ export default function ServiceHeader({ current }: { current: string }) {
               ))}
             </div>
           </div>
+          <Link href="/blog" className={current === '/blog' ? styles.activeNav : ''}>Blog</Link>
           <Link href="/#kunden">Referenzen</Link>
           <Link href="/#ansatz">Über uns</Link>
           <Link href="/#kontakt" className={styles.btnNav}>Kontakt aufnehmen</Link>

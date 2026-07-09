@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: 'IT-Beratung, Webentwicklung und KI & SaaS aus Berlin. Über 12 Jahre Erfahrung, agil und herstellerunabhängig.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'intersignum — IT-Beratung Berlin',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'intersignum — IT-Projekte, die in time und in budget bleiben.',
     description: 'IT-Beratung, Webentwicklung und KI & SaaS aus Berlin.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   alternates: {
     canonical: 'https://intersignum.de',

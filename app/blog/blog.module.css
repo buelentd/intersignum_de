@@ -1,0 +1,69 @@
+/* app/blog/blog.module.css */
+
+.main { padding-top: 74px; }
+
+.header {
+  background: linear-gradient(135deg, #EBF4F7 0%, #FAFAF8 100%);
+  padding: 80px 32px;
+}
+.headerInner { max-width: 760px; margin: 0 auto; }
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: #889BA9; margin-bottom: 24px;
+}
+.breadcrumb a { color: #006E8C; text-decoration: none; }
+.eyebrow {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #006E8C; margin-bottom: 16px;
+}
+.headerInner h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 500; color: #0C3D5E;
+  line-height: 1.2; margin-bottom: 20px;
+}
+.headerText {
+  font-size: 17px; line-height: 1.72; color: #4A5E6D; max-width: 600px;
+}
+
+.section { padding: 64px 32px 80px; background: #fff; }
+.sectionInner { max-width: 1160px; margin: 0 auto; }
+
+.artikelGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+.artikelCard {
+  display: flex; flex-direction: column;
+  background: #FAFAF8; border: 1px solid #D6DFE5;
+  border-radius: 8px; padding: 32px;
+  text-decoration: none;
+  transition: box-shadow .2s, transform .15s;
+}
+.artikelCard:hover {
+  box-shadow: 0 4px 20px rgba(12,61,94,.08);
+  transform: translateY(-2px);
+}
+.artikelMeta {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.kategorie {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #006E8C;
+  background: #EBF4F7; padding: 4px 10px; border-radius: 3px;
+}
+.lesezeit { font-size: 12px; color: #889BA9; }
+.artikelCard h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 20px; font-weight: 500; color: #0C3D5E;
+  margin-bottom: 12px; line-height: 1.3;
+}
+.artikelCard p { font-size: 14px; line-height: 1.65; color: #4A5E6D; flex: 1; }
+.readMore {
+  display: inline-block; margin-top: 20px;
+  font-size: 14px; font-weight: 600; color: #D45F0A;
+}
+
+@media (max-width: 900px) {
+  .artikelGrid { grid-template-columns: 1fr; }
+}

@@ -6,9 +6,9 @@ import { LogoBlue } from '../../components/Logo'
 import styles from './datenschutz.module.css'
 
 export const metadata: Metadata = {
-  title: 'Datenschutzerklärung — intersignum',
+  title: { absolute: 'Datenschutzerklärung — intersignum' },
   description: 'Datenschutzerklärung der intersignum UG (haftungsbeschränkt), Berlin.',
-  robots: { index: false },
+  robots: { index: false, follow: false },
 }
 
 const sections = [

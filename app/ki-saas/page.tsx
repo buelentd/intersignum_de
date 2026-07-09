@@ -6,15 +6,52 @@ import { getKISaasContent } from '../../lib/sanity/queries'
 import styles from './ki_saas.module.css'
 
 export const metadata: Metadata = {
-  title: 'KI & SaaS — intersignum',
-  description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.',
+  title: { absolute: 'KI & SaaS Beratung — pragmatisch umgesetzt | intersignum' },
+  description: 'KI-Integration und SaaS-Produktentwicklung ohne Hype. Automatisierung und datengetriebene Entscheidungen — pragmatisch, messbar, in time und in budget.',
+  alternates: { canonical: 'https://intersignum.de/ki-saas' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/ki-saas',
+    siteName: 'intersignum',
+    title: 'KI & SaaS — intersignum',
+    description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen — pragmatisch umgesetzt.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'KI & SaaS — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'KI & SaaS — intersignum',
+    description: 'KI-gestützte Lösungen und SaaS-Produkte für Ihre Prozesse. Automatisierung und datengetriebene Entscheidungen.',
+    images: ['/opengraph-image'],
+  },
 }
 
 export default async function KiSaas() {
   const c = await getKISaasContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'KI & SaaS', item: 'https://intersignum.de/ki-saas' },
+    ],
+  }
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'KI & SaaS',
+    description: 'KI-Integration und SaaS-Produktentwicklung: Automatisierung, datengetriebene Entscheidungen, pragmatisch umgesetzt.',
+    provider: { '@type': 'ProfessionalService', name: 'intersignum', url: 'https://intersignum.de' },
+    areaServed: 'DE',
+    serviceType: 'KI-Beratung und SaaS-Entwicklung',
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <ServiceHeader current="/ki-saas" />
 
       <main>

@@ -6,15 +6,52 @@ import { getWebentwicklungContent } from '../../lib/sanity/queries'
 import styles from './web.module.css'
 
 export const metadata: Metadata = {
-  title: 'Webentwicklung — intersignum',
-  description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.',
+  title: { absolute: 'Webentwicklung Berlin — Next.js & moderne Technologien | intersignum' },
+  description: 'Professionelle Webentwicklung in Berlin: Next.js, React, performante Web-Applikationen. Konzeption, Entwicklung und Betrieb aus einer Hand — ohne Vendor Lock-in.',
+  alternates: { canonical: 'https://intersignum.de/webentwicklung' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/webentwicklung',
+    siteName: 'intersignum',
+    title: 'Webentwicklung — intersignum',
+    description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Webentwicklung — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Webentwicklung — intersignum',
+    description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb.',
+    images: ['/opengraph-image'],
+  },
 }
 
 export default async function Webentwicklung() {
   const c = await getWebentwicklungContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'Webentwicklung', item: 'https://intersignum.de/webentwicklung' },
+    ],
+  }
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Webentwicklung',
+    description: 'Professionelle Webentwicklung in Berlin: Next.js, React, performante Web-Applikationen.',
+    provider: { '@type': 'ProfessionalService', name: 'intersignum', url: 'https://intersignum.de' },
+    areaServed: 'DE',
+    serviceType: 'Webentwicklung',
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <ServiceHeader current="/webentwicklung" />
 
       <main>

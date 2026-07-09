@@ -13,13 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/it-beratung`,
+      url: `${baseUrl}/it-projektmanagement`,
       lastModified,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/ki-saas`,
+      url: `${baseUrl}/it-beratung`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -31,16 +31,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/ki-saas`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/data`,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/datenschutz`,
+      url: `${baseUrl}/blog`,
       lastModified,
-      changeFrequency: 'yearly',
-      priority: 0.3,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/warum-it-projekte-scheitern`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ]
 }

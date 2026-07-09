@@ -1,0 +1,90 @@
+/* artikel.module.css */
+
+.main { padding-top: 74px; }
+
+.articleHeader {
+  background: linear-gradient(135deg, #EBF4F7 0%, #FAFAF8 100%);
+  padding: 64px 32px 72px;
+}
+.articleHeaderInner { max-width: 760px; margin: 0 auto; }
+
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: #889BA9; margin-bottom: 24px; flex-wrap: wrap;
+}
+.breadcrumb a { color: #006E8C; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+.meta {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 20px; flex-wrap: wrap;
+}
+.kategorie {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #006E8C; background: #EBF4F7; padding: 4px 10px; border-radius: 3px;
+}
+.lesezeit, .meta time { font-size: 13px; color: #889BA9; }
+
+.articleHeaderInner h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 500; color: #0C3D5E;
+  line-height: 1.2; margin-bottom: 24px;
+}
+.lead {
+  font-size: 18px; line-height: 1.72; color: #4A5E6D;
+}
+
+.article { padding: 64px 32px 80px; background: #fff; }
+.articleInner { max-width: 760px; margin: 0 auto; }
+
+.articleInner h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 500; color: #0C3D5E;
+  margin: 48px 0 18px;
+}
+.articleInner h2:first-child { margin-top: 0; }
+.articleInner p {
+  font-size: 16px; line-height: 1.8; color: #4A5E6D; margin-bottom: 18px;
+}
+.articleInner strong { color: #0C3D5E; }
+
+.fazit {
+  background: #EBF4F7;
+  border-left: 4px solid #006E8C;
+  border-radius: 0 8px 8px 0;
+  padding: 36px 40px;
+  margin: 56px 0 48px;
+}
+.fazit h2 { margin-top: 0; }
+
+.btnPrimary {
+  display: inline-flex; align-items: center;
+  font-size: 15px; font-weight: 600; color: #fff;
+  background: #D45F0A; padding: 13px 30px; border-radius: 4px;
+  text-decoration: none; transition: background .2s;
+  margin-top: 8px;
+}
+.btnPrimary:hover { background: #B34F08; }
+
+.related {
+  border-top: 1px solid #D6DFE5; padding-top: 36px; margin-top: 8px;
+}
+.related h3 {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #889BA9; margin-bottom: 16px;
+}
+.relatedLink {
+  display: block; font-size: 15px; font-weight: 500;
+  color: #006E8C; text-decoration: none; margin-bottom: 12px;
+}
+.relatedLink:hover { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .articleHeader { padding: 48px 24px 56px; }
+  .article { padding: 40px 24px 64px; }
+  .fazit { padding: 24px 24px; }
+}

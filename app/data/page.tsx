@@ -6,15 +6,52 @@ import { getDataContent } from '../../lib/sanity/queries'
 import styles from './data.module.css'
 
 export const metadata: Metadata = {
-  title: 'Data & Integration — intersignum',
-  description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt und Open-Source-Technologien.',
+  title: { absolute: 'Data & Integration — API, Data Warehouse, ETL | intersignum' },
+  description: 'Datenarchitektur und Systemintegration: REST API Design, Data Warehouse, ETL/ELT mit dbt. Open-Source, herstellerunabhängig, nachhaltig gebaut.',
+  alternates: { canonical: 'https://intersignum.de/data' },
+  openGraph: {
+    type: 'website',
+    locale: 'de_DE',
+    url: 'https://intersignum.de/data',
+    siteName: 'intersignum',
+    title: 'Data & Integration — intersignum',
+    description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt und Open-Source-Technologien.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Data & Integration — intersignum' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Data & Integration — intersignum',
+    description: 'REST API Design, Data Warehouse Architektur, ETL/ELT Pipelines mit dbt.',
+    images: ['/opengraph-image'],
+  },
 }
 
 export default async function Data() {
   const c = await getDataContent()
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://intersignum.de' },
+      { '@type': 'ListItem', position: 2, name: 'Data & Integration', item: 'https://intersignum.de/data' },
+    ],
+  }
+
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Data & Integration',
+    description: 'Datenarchitektur und Systemintegration: REST API Design, Data Warehouse, ETL/ELT Pipelines mit dbt.',
+    provider: { '@type': 'ProfessionalService', name: 'intersignum', url: 'https://intersignum.de' },
+    areaServed: 'DE',
+    serviceType: 'Data Engineering und API Integration',
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
       <ServiceHeader current="/data" />
 
       <main>
