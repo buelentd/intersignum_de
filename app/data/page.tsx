@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
 import ServiceHeader from '../../components/ServiceHeader'
+import { getDataContent } from '../../lib/sanity/queries'
 import styles from './data.module.css'
 
 export const metadata: Metadata = {
@@ -9,16 +10,9 @@ export const metadata: Metadata = {
   description: 'REST API Design, Data Warehouse Architektur und ETL/ELT-Pipelines mit Open-Source-Technologien. Kein Vendor Lock-in.',
 }
 
-const karten = [
-  { num: '01', titel: 'REST & GraphQL APIs', text: 'Sauberes API-Design nach OpenAPI-Standard — mit Authentifizierung, Rate-Limiting, Versionierung und vollständiger Dokumentation.' },
-  { num: '02', titel: 'Data Warehouse Architektur', text: 'Aufbau moderner Datenhaushalte auf Basis von BigQuery, Redshift, Snowflake oder selbstgehostetem ClickHouse — ohne Vendor Lock-in.' },
-  { num: '03', titel: 'ETL/ELT-Pipelines', text: 'Datenpipelines mit dbt, Apache Airflow oder Prefect — für zuverlässige, testbare und dokumentierte Datenflüsse.' },
-  { num: '04', titel: 'System-Integration', text: 'Verbindung heterogener Systemlandschaften: ERP, CRM, E-Commerce, Marketing-Tools — via API, Webhooks oder Message-Queues.' },
-  { num: '05', titel: 'Echtzeit-Daten', text: 'Streaming-Architekturen mit Kafka oder AWS Kinesis für Echtzeit-Analysen, Live-Dashboards und event-getriebene Systeme.' },
-  { num: '06', titel: 'Data Governance', text: 'Datenqualitäts­sicherung, Lineage-Tracking und DSGVO-konforme Datenhaltung — damit Ihre Daten vertrauenswürdig bleiben.' },
-]
+export default async function Data() {
+  const c = await getDataContent()
 
-export default function Data() {
   return (
     <>
       <ServiceHeader current="/data" />
@@ -32,17 +26,15 @@ export default function Data() {
               <span>›</span>
               <span>Data & Integration</span>
             </div>
-            <p className={styles.eyebrow}>04 — Leistung</p>
-            <h1>Daten, die Entscheidungen ermöglichen.</h1>
-            <p className={styles.heroText}>
-              Wir bauen APIs, Datenpipelines und Integrationen, die zuverlässig laufen — auf Open-Source-Technologien, ohne Vendor Lock-in und mit vollständiger Dokumentation.
-            </p>
+            <p className={styles.eyebrow}>{c.hero.eyebrow}</p>
+            <h1>{c.hero.title}</h1>
+            <p className={styles.heroText}>{c.hero.subtitle}</p>
             <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
           </div>
           <div className={styles.heroImage}>
             <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
-              alt="Data und Integration intersignum"
+              alt={c.hero.title}
             />
           </div>
         </div>
@@ -50,9 +42,9 @@ export default function Data() {
         {/* LEISTUNGEN */}
         <section className={styles.section}>
           <div className={styles.sectionInner}>
-            <h2>Was wir für Sie bauen</h2>
+            <h2>{c.leistungenTitel}</h2>
             <div className={styles.grid}>
-              {karten.map((k) => (
+              {c.karten.map((k) => (
                 <div key={k.num} className={styles.card}>
                   <div className={styles.cardNum}>{k.num}</div>
                   <h3>{k.titel}</h3>
@@ -68,13 +60,9 @@ export default function Data() {
           <div className={styles.sectionInner}>
             <div className={styles.twoCol}>
               <div>
-                <h2>Offene Technologien. Kein Lock-in.</h2>
-                <p>
-                  Wir setzen konsequent auf Open-Source-Technologien und offene Standards. Das bedeutet: keine Abhängigkeit von einem einzelnen Anbieter, volle Kontrolle über Ihre Daten und keine steigenden Lizenzkosten bei wachsendem Datenvolumen.
-                </p>
-                <p>
-                  Von der ersten API bis zur vollständigen Data-Platform: Wir begleiten Unternehmen beim Aufbau einer Daten­infrastruktur, die mit ihren Anforderungen wächst — nicht dagegen arbeitet.
-                </p>
+                <h2>{c.abschnitt.titel}</h2>
+                <p>{c.abschnitt.text1}</p>
+                <p>{c.abschnitt.text2}</p>
                 <Link href="/#kontakt" className={styles.btnPrimary} style={{ marginTop: '32px' }}>
                   Gespräch vereinbaren →
                 </Link>
@@ -82,7 +70,7 @@ export default function Data() {
               <div className={styles.imageWrap}>
                 <img
                   src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80"
-                  alt="Datenpipelines intersignum"
+                  alt={c.abschnitt.titel}
                 />
               </div>
             </div>
@@ -114,8 +102,8 @@ export default function Data() {
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.sectionInner}>
-            <h2>Dateninfrastruktur aufbauen?</h2>
-            <p>Schildern Sie uns Ihre aktuelle Systemlandschaft — wir zeigen Ihnen, was möglich ist.</p>
+            <h2>{c.cta.titel}</h2>
+            <p>{c.cta.text}</p>
             <Link href="/#kontakt" className={styles.btnPrimary}>Jetzt Kontakt aufnehmen →</Link>
           </div>
         </section>

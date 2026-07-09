@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Footer from '../../components/Footer'
 import ServiceHeader from '../../components/ServiceHeader'
+import { getITBeratungContent } from '../../lib/sanity/queries'
 import styles from './it_beratung.module.css'
 
 export const metadata: Metadata = {
@@ -9,16 +10,9 @@ export const metadata: Metadata = {
   description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie seit 2013. Ihre IT-Projekte bleiben im Rahmen — ohne Überraschungen.',
 }
 
-const karten = [
-  { num: '01', titel: 'Agile Projektsteuerung', text: 'Scrum, Kanban oder hybride Methoden — wir wählen das Rahmenwerk, das zu Ihrem Team und Ihren Zielen passt. Iterative Sprints statt großem Knall am Ende.' },
-  { num: '02', titel: 'Prozessanalyse & Optimierung', text: 'Wir analysieren bestehende Abläufe, identifizieren Engpässe und leiten konkrete Maßnahmen ab — messbar, priorisiert und umsetzbar.' },
-  { num: '03', titel: 'Technologieauswahl', text: 'Vendor-neutral: Wir haben keine Partnerschafts­bindungen. Unsere Empfehlungen basieren ausschließlich auf Ihren Anforderungen und Best Practices.' },
-  { num: '04', titel: 'Budget- & Zeitplanung', text: 'Realistische Roadmaps, Aufwandsschätzungen und regelmäßige Reviews halten Scope, Kosten und Timeline unter Kontrolle.' },
-  { num: '05', titel: 'Stakeholder-Kommunikation', text: 'Wir übersetzen technische Komplexität in verständliche Entscheidungsgrundlagen für Management und Fachbereiche.' },
-  { num: '06', titel: 'Quality Assurance', text: 'Testkonzepte, Code-Reviews und strukturierte Abnahmen sichern die Qualität — von der Anforderung bis zum Go-live.' },
-]
+export default async function ITBeratung() {
+  const c = await getITBeratungContent()
 
-export default function ITBeratung() {
   return (
     <>
       <ServiceHeader current="/it-beratung" />
@@ -32,17 +26,15 @@ export default function ITBeratung() {
               <span>›</span>
               <span>IT-Beratung</span>
             </div>
-            <p className={styles.eyebrow}>01 — Leistung</p>
-            <h1>IT-Projekte, die im Rahmen bleiben.</h1>
-            <p className={styles.heroText}>
-              Seit 2013 begleiten wir Unternehmen bei anspruchsvollen IT-Projekten — agil, herstellerunabhängig und mit klarem Fokus auf Ergebnis. Kein Vendor Lock-in, keine versteckten Agenden.
-            </p>
+            <p className={styles.eyebrow}>{c.hero.eyebrow}</p>
+            <h1>{c.hero.title}</h1>
+            <p className={styles.heroText}>{c.hero.subtitle}</p>
             <Link href="/#kontakt" className={styles.btnPrimary}>Projekt besprechen →</Link>
           </div>
           <div className={styles.heroImage}>
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-              alt="IT-Beratung intersignum"
+              alt={c.hero.title}
             />
           </div>
         </div>
@@ -50,9 +42,9 @@ export default function ITBeratung() {
         {/* LEISTUNGEN */}
         <section className={styles.section}>
           <div className={styles.sectionInner}>
-            <h2>Was wir für Sie tun</h2>
+            <h2>{c.leistungenTitel}</h2>
             <div className={styles.grid}>
-              {karten.map((k) => (
+              {c.karten.map((k) => (
                 <div key={k.num} className={styles.card}>
                   <div className={styles.cardNum}>{k.num}</div>
                   <h3>{k.titel}</h3>
@@ -68,13 +60,9 @@ export default function ITBeratung() {
           <div className={styles.sectionInner}>
             <div className={styles.twoCol}>
               <div>
-                <h2>Unabhängig. Erfahren. Direkt.</h2>
-                <p>
-                  intersignum ist kein Systemhaus und kein Software-Hersteller. Wir haben keine Zertifizierungs­verpflichtungen gegenüber Herstellern, keine Provisionen für Lizenzen und keine eigenen Produkte zu verkaufen. Das macht unsere Beratung frei von Interessenkonflikten.
-                </p>
-                <p>
-                  Über zwölf Jahre und mehr als 50 Projekte haben uns gelehrt: Die meisten IT-Projekte scheitern nicht an Technologie, sondern an schlechter Planung, unklaren Anforderungen und fehlender Kommunikation. Genau dort setzen wir an.
-                </p>
+                <h2>{c.abschnitt.titel}</h2>
+                <p>{c.abschnitt.text1}</p>
+                <p>{c.abschnitt.text2}</p>
                 <Link href="/#kontakt" className={styles.btnPrimary} style={{ marginTop: '32px' }}>
                   Gespräch vereinbaren →
                 </Link>
@@ -82,7 +70,7 @@ export default function ITBeratung() {
               <div className={styles.imageWrap}>
                 <img
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"
-                  alt="Beratungsgespräch intersignum"
+                  alt={c.abschnitt.titel}
                 />
               </div>
             </div>
@@ -114,8 +102,8 @@ export default function ITBeratung() {
         {/* CTA */}
         <section className={styles.cta}>
           <div className={styles.sectionInner}>
-            <h2>Bereit für Ihr nächstes IT-Projekt?</h2>
-            <p>Schildern Sie uns Ihr Vorhaben — unverbindlich und kostenlos. Wir melden uns innerhalb eines Werktages.</p>
+            <h2>{c.cta.titel}</h2>
+            <p>{c.cta.text}</p>
             <Link href="/#kontakt" className={styles.btnPrimary}>Jetzt Kontakt aufnehmen →</Link>
           </div>
         </section>
