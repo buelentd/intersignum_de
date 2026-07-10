@@ -10,6 +10,15 @@ import styles from './data.module.css'
 export const metadata: Metadata = {
   title: 'Data & Integration Berlin — intersignum',
   description: 'REST API Design, Data Warehouse Architektur und ETL/ELT-Pipelines mit Open-Source-Technologien. Kein Vendor Lock-in.',
+  alternates: {
+    canonical: 'https://intersignum.de/data',
+  },
+  openGraph: {
+    title: 'Data & Integration Berlin — intersignum',
+    description: 'REST API Design, Data Warehouse Architektur und ETL/ELT-Pipelines mit Open-Source-Technologien. Kein Vendor Lock-in.',
+    url: 'https://intersignum.de/data',
+    type: 'website',
+  },
 }
 
 export default async function Data() {

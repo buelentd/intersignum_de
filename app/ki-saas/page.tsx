@@ -10,6 +10,15 @@ import styles from './ki_saas.module.css'
 export const metadata: Metadata = {
   title: 'KI & SaaS Berlin — intersignum',
   description: 'Maßgeschneiderte KI-Anwendungen und SaaS-Produkte für Unternehmen. DSGVO-konform, praxisnah und nahtlos integriert.',
+  alternates: {
+    canonical: 'https://intersignum.de/ki-saas',
+  },
+  openGraph: {
+    title: 'KI & SaaS Berlin — intersignum',
+    description: 'Maßgeschneiderte KI-Anwendungen und SaaS-Produkte für Unternehmen. DSGVO-konform, praxisnah und nahtlos integriert.',
+    url: 'https://intersignum.de/ki-saas',
+    type: 'website',
+  },
 }
 
 export default async function KiSaas() {

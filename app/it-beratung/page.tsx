@@ -10,6 +10,15 @@ import styles from './it_beratung.module.css'
 export const metadata: Metadata = {
   title: 'IT-Beratung Berlin — intersignum',
   description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie seit 2013. Ihre IT-Projekte bleiben im Rahmen — ohne Überraschungen.',
+  alternates: {
+    canonical: 'https://intersignum.de/it-beratung',
+  },
+  openGraph: {
+    title: 'IT-Beratung Berlin — intersignum',
+    description: 'Agile Projektsteuerung, Prozessanalyse und unabhängige Technologiestrategie seit 2013. Ihre IT-Projekte bleiben im Rahmen — ohne Überraschungen.',
+    url: 'https://intersignum.de/it-beratung',
+    type: 'website',
+  },
 }
 
 export default async function ITBeratung() {

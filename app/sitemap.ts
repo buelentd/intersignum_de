@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://intersignum.de'
-  const lastModified = new Date()
+  const lastModified = new Date('2025-06-01')
 
   return [
     {

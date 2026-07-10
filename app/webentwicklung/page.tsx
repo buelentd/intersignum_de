@@ -10,6 +10,15 @@ import styles from './web.module.css'
 export const metadata: Metadata = {
   title: 'Webentwicklung Berlin — intersignum',
   description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand seit 2013.',
+  alternates: {
+    canonical: 'https://intersignum.de/webentwicklung',
+  },
+  openGraph: {
+    title: 'Webentwicklung Berlin — intersignum',
+    description: 'Professionelle Websites und Web-Applikationen. Konzeption, Design, Entwicklung und Betrieb — alles aus einer Hand seit 2013.',
+    url: 'https://intersignum.de/webentwicklung',
+    type: 'website',
+  },
 }
 
 export default async function Webentwicklung() {
